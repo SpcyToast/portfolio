@@ -1,9 +1,11 @@
-import Image from 'next/image'
+'use client'
+import Tictactoe from '@/client/components/application 1/Tictactoe'
 
 export default function Home() {
   return (
     <>
-      <h1>Hello World</h1>
+    <>Functional</>
+      <Tictactoe />
     </>
   )
 }

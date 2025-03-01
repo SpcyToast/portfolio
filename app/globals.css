@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @theme {
   --font-sans: var(--font-geist-sans);
@@ -21,4 +21,22 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.tictactoe-contianer {
+  display: block;
+  outline-width: 3px;
+  outline-color: red;
+}
+
+.tictactoe {
+  display: block;
+  outline-width: 3px;
+  outline-color: yellow;
+}
+
+.cell {
+  display: block;
+  outline-width: 3px;
+  outline-color: blue;
 }
