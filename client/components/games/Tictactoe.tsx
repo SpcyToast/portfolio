@@ -43,24 +43,29 @@ export default function Tictactoe() {
   }
 
   return (
-    <div className="tictactoe-contianer">
-      {board.map((cell, i) => {
-        return (
-          <button
-            className={`item ${'item-' + (i + 1)}} tictactoe`}
-            key={i}
-            onClick={() => cell === 2 && !winState && makeMove(i)}
-          >
-            {cell === 0 ? 'O' : cell === 1 ? 'X' : ''}
-          </button>
-        )
-      })}
-      <label className="tictactoe-info">{`It's ${
-        turn === 0 ? 'O' : 'X'
-      }'s Turn`}</label>
-      <button className="tictactoe-info" onClick={() => reset()}>
-        Reset
-      </button>
-    </div>
+    <>
+      <div className="tictactoe-contianer">
+        {board.map((cell, i) => {
+          return (
+            <button
+              className={`item ${'item-' + (i + 1)}} tictactoe`}
+              key={i}
+              onClick={() => cell === 2 && !winState && makeMove(i)}
+            >
+              {cell === 0 ? 'O' : cell === 1 ? 'X' : ''}
+            </button>
+          )
+        })}
+        <label className="tictactoe-info">{`It's ${
+          turn === 0 ? 'O' : 'X'
+        }'s Turn`}</label>
+        <button className="tictactoe-info" onClick={() => reset()}>
+          Reset
+        </button>
+      </div>
+      {winState && (
+        <h1 className="tictactoe-win">{`${turn === 0 ? 'O' : 'X'} Wins!`}</h1>
+      )}
+    </>
   )
 }
