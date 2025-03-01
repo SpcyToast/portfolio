@@ -23,20 +23,48 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+.window {
+  display: grid;
+  width: 400px;
+  height: 400px;
+  grid-template-rows: 30px 380px;
+  grid-template-columns: 400px;
+  align-self: center;
+}
+
+.window-tab {
+  display: grid;
+  grid-template-rows: 30px;
+  grid-template-columns: 310px 30px 30px 30px;
+  align-self: center;
+  border-width: 3px;
+  border-color: green;
+  align-content: center;
+}
+
+.window-name {
+  align-content: center;
+  justify-content: left;
+}
+
+.window-buttons {
+  align-content: center;
+  justify-content: right;
+  border-width: 3px;
+  border-color: red;
+}
+
 .tictactoe-contianer {
-  display: block;
-  outline-width: 3px;
-  outline-color: red;
+  display: grid;
+  align-content: center;
+  justify-content: center;
+  grid-template-rows: 30% 30% 30%;
+  grid-template-columns: 30% 30% 30%;
+  border-width: 3px;
+  border-color: blue;
 }
 
 .tictactoe {
-  display: block;
-  outline-width: 3px;
-  outline-color: yellow;
-}
-
-.cell {
-  display: block;
-  outline-width: 3px;
-  outline-color: blue;
+  border-width: 3px;
+  border-color: yellow;
 }

@@ -5,14 +5,12 @@ export default function Tictactoe() {
   const [board, setBoard] = useState(cleanBoard)
 
   return (
-    <div className="tictactoe-container">
-      {board.map((cell) => {
+    <div className="tictactoe-contianer">
+      {board.map((cell, i) => {
         return (
-          <div className="tictactoe">
-            <button className="cell">
-              {cell === 1 ? 'O' : cell === 2 ? 'X' : 'Testing'}{' '}
-            </button>
-          </div>
+          <button className={`item ${'item-' + (i + 1)}} tictactoe`} key={i}>
+            {cell === 1 ? 'O' : cell === 2 ? 'X' : 'Testing'}{' '}
+          </button>
         )
       })}
     </div>

@@ -1,11 +1,11 @@
 'use client'
-import Tictactoe from '@/client/components/application 1/Tictactoe'
+import Window from '@/client/components/window'
 
 export default function Home() {
   return (
     <>
-    <>Functional</>
-      <Tictactoe />
+      <>Functional</>
+      <Window />
     </>
   )
 }
