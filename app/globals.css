@@ -8,6 +8,7 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --tictactoe-box-sizing: 26%;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -55,11 +56,16 @@ body {
 }
 
 .tictactoe-contianer {
+  padding-top: 5px;
   display: grid;
   align-content: center;
   justify-content: center;
-  grid-template-rows: 30% 30% 30%;
-  grid-template-columns: 30% 30% 30%;
+  grid-template-rows: var(--tictactoe-box-sizing) var(--tictactoe-box-sizing) var(
+      --tictactoe-box-sizing
+    );
+  grid-template-columns: var(--tictactoe-box-sizing) var(--tictactoe-box-sizing) var(
+      --tictactoe-box-sizing
+    );
   border-width: 3px;
   border-color: blue;
 }
@@ -67,4 +73,16 @@ body {
 .tictactoe {
   border-width: 3px;
   border-color: yellow;
+}
+
+.tictactoe-info {
+  padding-top: 5px;
+  justify-self: center;
+  grid-column: span 3;
+}
+
+#Blank {
+  position: absolute;
+  top: 50px;
+  left: 50px;
 }

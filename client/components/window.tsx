@@ -5,9 +5,11 @@ export default function Window() {
   const windowName = 'Blank'
 
   return (
-    <div className="window">
+    <div className="window" id={windowName}>
       <span className="window-tab">
-        <h3 className="window-name">{windowName}</h3>{' '}
+        <label className="window-name" draggable={true}>
+          {windowName}
+        </label>
         <button className="window-buttons">_</button>
         <button className="window-buttons">O</button>
         <button className="window-buttons">X</button>
