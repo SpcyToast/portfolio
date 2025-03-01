@@ -36,7 +36,7 @@ body {
 .window-tab {
   display: grid;
   grid-template-rows: 30px;
-  grid-template-columns: 310px 30px 30px 30px;
+  grid-template-columns: 305px 30px 30px 30px;
   align-self: center;
   border-width: 3px;
   border-color: green;
