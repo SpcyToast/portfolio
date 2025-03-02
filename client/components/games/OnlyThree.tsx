@@ -71,10 +71,24 @@ export default function OnlyThree({
           return (
             <button
               className={`tictactoe`}
+              id={cell === 0 ? 'O' : 'X'}
               key={i}
               onClick={() => cell === 2 && !winState && makeMove(i)}
             >
-              {cell === 0 ? 'O' : cell === 1 ? 'X' : ''}
+              <p
+                className="abril-fatface-regular"
+                id={
+                  turn === 0
+                    ? o[2] === i
+                      ? 'last'
+                      : ''
+                    : x[2] === i
+                    ? 'last'
+                    : ''
+                }
+              >
+                {cell === 0 ? 'O' : cell === 1 ? 'X' : ''}
+              </p>
             </button>
           )
         })}
