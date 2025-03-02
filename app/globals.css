@@ -78,6 +78,7 @@ body {
   border-left-width: 3px;
   border-color: black;
   background-color: aquamarine;
+  font-size: large;
 }
 
 #last-button {

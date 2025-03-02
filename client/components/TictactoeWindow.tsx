@@ -25,7 +25,7 @@ export default function TictactoeWindow({ setWindow }: Props) {
           {windowName}
         </label>
         <button className="window-buttons">_</button>
-        <button className="window-buttons">O</button>
+        <button className="window-buttons">□</button>
         <button
           className="window-buttons"
           id="last-button"
