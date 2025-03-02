@@ -27,7 +27,8 @@ body {
 .window {
   display: grid;
   grid-template-rows: 30px 370px;
-  width: 400px;
+  min-width: 300px;
+  width: auto;
   height: auto;
   align-self: center;
   background: white;
@@ -92,8 +93,8 @@ body {
   display: grid;
   align-content: center;
   justify-self: center;
-  width: 250px;
-  height: 300px;
+  min-width: 250px;
+  min-height: 300px;
   grid-template-rows: 28% 28% 28%;
   grid-template-columns: 33% 33% 33%;
   gap: 0px;
@@ -110,14 +111,19 @@ body {
   grid-column: span 3;
 }
 
+#turn {
+  padding-top: 8px;
+}
+
 #reset {
-  padding-bottom: 20px;
+  padding-bottom: 30px;
 }
 
 .tictactoe-win {
   position: absolute;
-  align-content: center;
-  justify-content: center;
+  left: 38%;
+  top: 47%;
+  justify-items: center;
   background-color: black;
   color: white;
   padding: 5px;

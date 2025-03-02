@@ -60,7 +60,7 @@ export default function Tictactoe({
             </button>
           )
         })}
-        <label className="tictactoe-info">{`It's ${
+        <label className="tictactoe-info" id="turn">{`It's ${
           turn === 0 ? 'O' : 'X'
         }'s Turn`}</label>
         <button className="tictactoe-info" id="reset" onClick={() => reset()}>

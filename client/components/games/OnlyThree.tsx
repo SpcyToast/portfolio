@@ -1,12 +1,19 @@
 import getRandomNumber from '@/client/getRandomNumber'
 import { useEffect, useState } from 'react'
 import winStates from '@/client/data/tictactoe.json'
+import { TictactoeProps } from '@/models/window'
 
-export default function OnlyThree() {
+export default function OnlyThree({
+  setTurn,
+  setWinState,
+  winState,
+  turn,
+}: TictactoeProps) {
   const cleanBoard: number[] = [2, 2, 2, 2, 2, 2, 2, 2, 2]
+  const cleanTurns: number[] = [9, 9, 9]
   const [board, setBoard] = useState(cleanBoard)
-  const [turn, setTurn] = useState(2)
-  const [winState, setWinState] = useState(false)
+  const [x, setX] = useState(cleanTurns)
+  const [o, setO] = useState(cleanTurns)
 
   useEffect(() => {
     reset()
@@ -15,21 +22,36 @@ export default function OnlyThree() {
   // randomise starting player at the start of every game
   function reset() {
     setBoard(cleanBoard)
+    setO(cleanTurns)
+    setX(cleanTurns)
     const start = getRandomNumber(0, 1)
     start === 0 ? setTurn(0) : setTurn(1)
     setWinState(false)
   }
 
   function makeMove(i: number) {
-    const play = [...board]
+    let play: number[] = cleanTurns
+    let newBoard = [...cleanBoard, 0]
     let switchable = true
-    play[i] = turn
-    setBoard(play)
+    turn === 0 ? (play = [...o]) : (play = [...x])
+    play.pop()
+    play.unshift(i)
+
+    turn === 0 ? setO(play) : setX(play)
+    for (let j = 0; j < 3; j++) {
+      newBoard[play[j] as number] = turn
+      turn === 0
+        ? (newBoard[x[j] as number] = 1)
+        : (newBoard[o[j] as number] = 0)
+    }
+    newBoard.pop()
+    console.log(newBoard)
+    setBoard(newBoard)
     for (let i = 0; i < winStates.length; i++) {
       if (
-        play[winStates[i][0]] === turn &&
-        play[winStates[i][1]] === turn &&
-        play[winStates[i][2]] === turn
+        newBoard[winStates[i][0]] === turn &&
+        newBoard[winStates[i][1]] === turn &&
+        newBoard[winStates[i][2]] === turn
       ) {
         setWinState(true)
         switchable = false
@@ -48,7 +70,7 @@ export default function OnlyThree() {
         {board.map((cell, i) => {
           return (
             <button
-              className={`item ${'item-' + (i + 1)}} tictactoe`}
+              className={`tictactoe`}
               key={i}
               onClick={() => cell === 2 && !winState && makeMove(i)}
             >
@@ -56,16 +78,13 @@ export default function OnlyThree() {
             </button>
           )
         })}
-        <label className="tictactoe-info">{`It's ${
+        <label className="tictactoe-info" id="turn">{`It's ${
           turn === 0 ? 'O' : 'X'
         }'s Turn`}</label>
-        <button className="tictactoe-info" onClick={() => reset()}>
+        <button className="tictactoe-info" id="reset" onClick={() => reset()}>
           Reset
         </button>
       </div>
-      {winState && (
-        <h1 className="tictactoe-win">{`${turn === 0 ? 'O' : 'X'} Wins!`}</h1>
-      )}
     </>
   )
 }

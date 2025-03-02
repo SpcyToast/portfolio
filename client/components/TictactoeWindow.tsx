@@ -36,11 +36,14 @@ export default function TictactoeWindow({ setWindow }: Props) {
       </span>
       <div className="content">
         <span className="modes">
-          <button onClick={() => rotate(1)}>{`<-`}</button>
+          <button onClick={() => rotate(1)}>{`←`}</button>
           <label>{modes[selected]}</label>
-          <button onClick={() => rotate(-1)}>{`->`}</button>
+          <button onClick={() => rotate(-1)}>{`→`}</button>
         </span>{' '}
         <br />
+        {winState && (
+          <h1 className="tictactoe-win">{`${turn === 0 ? 'O' : 'X'} Wins!`}</h1>
+        )}
         {modes[selected] === 'Tic-Tac-Toe' && (
           <Tictactoe
             setTurn={setTurn}
@@ -49,11 +52,15 @@ export default function TictactoeWindow({ setWindow }: Props) {
             winState={winState}
           />
         )}
-        {modes[selected] === 'Max 3 Each' && <OnlyThree />}
-        {/* {modes[selected] === 'Super Tic-Tac-Toe'} */}
-        {winState && (
-          <h1 className="tictactoe-win">{`${turn === 0 ? 'O' : 'X'} Wins!`}</h1>
+        {modes[selected] === 'Max 3 Each' && (
+          <OnlyThree
+            setTurn={setTurn}
+            setWinState={setWinState}
+            turn={turn}
+            winState={winState}
+          />
         )}
+        {/* {modes[selected] === 'Super Tic-Tac-Toe'} */}
       </div>
     </div>
   )
