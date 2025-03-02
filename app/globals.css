@@ -1,28 +1,17 @@
 @import 'tailwindcss';
 
-@theme {
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
 :root {
-  --foreground: #171717;
   --tictactoe-box-sizing: 26%;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-A: Arial, Helvetica, sans-serif;
+  --tictactoe-window-dims: 400px;
 }
 
 body {
-  color: var(--foreground);
   background-image: url('/Wallpaper.png');
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-A);
 }
 
+/* Main page, used to sort icons in a grid format */
 .homepage {
   display: grid;
   padding: 20px;
@@ -35,40 +24,47 @@ body {
   height: 50px;
 }
 
+/* Window grid */
 .window {
   display: grid;
+  grid-template-rows: 30px 370px;
   width: 400px;
-  height: 400px;
-  grid-template-rows: 30px 380px;
-  grid-template-columns: 400px;
   align-self: center;
   background: white;
+  border: solid black 3px;
 }
 
+/* Window information bar */
+
 .window-tab {
-  display: grid;
-  grid-template-rows: 30px;
-  grid-template-columns: 305px 30px 30px 30px;
-  align-self: center;
-  border-width: 3px;
-  border-color: green;
-  align-content: center;
+  display: flex;
+  border-bottom-width: 3px;
+  border-color: black;
+  background-color: mediumaquamarine;
 }
 
 .window-name {
   align-content: center;
   justify-content: left;
+  flex-grow: 1;
 }
 
 .window-buttons {
   align-content: center;
   justify-content: right;
-  border-width: 3px;
-  border-color: red;
+  padding-right: 9px;
+  padding-left: 9px;
+  border-left-width: 3px;
+  border-color: black;
+  background-color: aqua;
+}
+
+.modes {
+  align-self: center;
+  justify-self: center;
 }
 
 .tictactoe-contianer {
-  padding-top: 5px;
   display: grid;
   align-content: center;
   justify-content: center;
@@ -78,8 +74,11 @@ body {
   grid-template-columns: var(--tictactoe-box-sizing) var(--tictactoe-box-sizing) var(
       --tictactoe-box-sizing
     );
-  border-width: 3px;
-  border-color: blue;
+}
+
+.tictactoe-size {
+  width: var(--tictactoe-window-dims);
+  height: var(--tictactoe-window-dims);
 }
 
 .tictactoe {
