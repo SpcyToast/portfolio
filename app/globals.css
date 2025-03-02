@@ -32,6 +32,14 @@ body {
   height: 50px;
 }
 
+.focus {
+  filter: drop-shadow(2px 2px 0.25px palegoldenrod)
+    drop-shadow(-2px 2px 0.25px palegoldenrod)
+    drop-shadow(-2px -2px 0.25px palegoldenrod)
+    drop-shadow(2px -2px 0.25px palegoldenrod);
+  opacity: 1;
+}
+
 /* Window grid */
 .window {
   display: grid;
