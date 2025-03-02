@@ -9,16 +9,16 @@ export default function Home() {
     <div className="homepage">
       <button onClick={() => setTictactoe(true)}>
         <img src="/tictactoe.svg" className="icon" />
-        <p style={{justifySelf: "left", fontSize:"10px"}}>Tic-Tac-Toe</p>
+        <p style={{ justifySelf: 'left', fontSize: '10px' }}>Tic-Tac-Toe</p>
       </button>
-      <button onClick={() => setTictactoe(true)}>
+      {/* <button onClick={() => setTictactoe(true)}>
         <img src="/tictactoe.svg" className="icon" />
         <p style={{justifySelf: "left", fontSize:"10px"}}>Tic-Tac-Toe</p>
       </button>
       <button onClick={() => setTictactoe(true)}>
         <img src="/tictactoe.svg" className="icon" />
         <p style={{justifySelf: "left", fontSize:"10px"}}>Tic-Tac-Toe</p>
-      </button>
+      </button> */}
       {tictactoe && <TictactoeWindow setWindow={setTictactoe} />}
     </div>
   )
