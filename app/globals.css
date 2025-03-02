@@ -177,6 +177,10 @@ body {
   background-color: lightgreen;
 }
 
+.small-font {
+  font-size: small;
+}
+
 /* window positioning */
 
 #Tic-Tac-Toe {

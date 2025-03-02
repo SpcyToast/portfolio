@@ -19,4 +19,5 @@ export interface SuperProps {
   setWinState: React.Dispatch<React.SetStateAction<boolean>>
   setMainBoard: React.Dispatch<React.SetStateAction<number[]>>
   mainBoard: number[]
+  reseted: boolean
 }

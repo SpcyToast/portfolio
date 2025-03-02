@@ -12,14 +12,15 @@ export default function MiniTictactoe({
   setTurn,
   setWinState,
   setMainBoard,
-  mainBoard
+  mainBoard,
+  reseted,
 }: SuperProps) {
   const cleanBoard: number[] = [2, 2, 2, 2, 2, 2, 2, 2, 2]
   const [board, setBoard] = useState(cleanBoard)
 
   useEffect(() => {
     reset()
-  }, [])
+  }, [reseted])
 
   // randomise starting player at the start of every game
   function reset() {
@@ -64,9 +65,9 @@ export default function MiniTictactoe({
               className={`tictactoe`}
               id={cell === 0 ? 'O' : 'X'}
               key={i}
-              onClick={() => cell === 2 && !winState && makeMove(i)}
+              onClick={() => cell === 2 && state == 2 && makeMove(i)}
             >
-              <p className="abril-fatface-regular">
+              <p className="abril-fatface-regular small-font">
                 {cell === 0 ? 'O' : cell === 1 ? 'X' : ''}
               </p>
             </button>

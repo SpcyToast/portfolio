@@ -13,6 +13,7 @@ export default function SuperTictactoe({
   const cleanBoard: number[] = [2, 2, 2, 2, 2, 2, 2, 2, 2]
   const [board, setBoard] = useState(cleanBoard)
   const [activeBoard, setActiveBoard] = useState(9)
+  const [reseted, setReseted] = useState(false)
 
   useEffect(() => {
     reset()
@@ -20,6 +21,7 @@ export default function SuperTictactoe({
 
   // randomise starting player at the start of every game
   function reset() {
+    setReseted(!reseted)
     setBoard(cleanBoard)
     const start = getRandomNumber(0, 1)
     start === 0 ? setTurn(0) : setTurn(1)
@@ -30,17 +32,20 @@ export default function SuperTictactoe({
     <>
       <div className="tictactoe-contianer">
         {board.map((state, i) => (
-          <MiniTictactoe
-            state={state}
-            activeBoard={activeBoard}
-            setActiveBoard={setActiveBoard}
-            currentBoard={i}
-            turn={turn}
-            setTurn={setTurn}
-            setWinState={setWinState}
-            setMainBoard={setBoard}
-            mainBoard={board}
-          />
+          <>
+            <MiniTictactoe
+              state={state}
+              activeBoard={activeBoard}
+              setActiveBoard={setActiveBoard}
+              currentBoard={i}
+              turn={turn}
+              setTurn={setTurn}
+              setWinState={setWinState}
+              setMainBoard={setBoard}
+              mainBoard={board}
+              reseted={reseted}
+            />
+          </>
         ))}
         <label className="tictactoe-info" id="turn">{`It's ${
           turn === 0 ? 'O' : 'X'
