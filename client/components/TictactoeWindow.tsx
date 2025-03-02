@@ -2,6 +2,7 @@ import { useState } from 'react'
 import Tictactoe from '@/client/components/games/Tictactoe'
 import { Props } from '@/models/window'
 import OnlyThree from './games/OnlyThree'
+import SuperTictactoe from './games/SuperTictactoe'
 
 export default function TictactoeWindow({ setWindow }: Props) {
   const windowName: string = 'Tic-Tac-Toe'
@@ -60,7 +61,14 @@ export default function TictactoeWindow({ setWindow }: Props) {
             winState={winState}
           />
         )}
-        {/* {modes[selected] === 'Super Tic-Tac-Toe'} */}
+        {modes[selected] === 'Super Tic-Tac-Toe' && (
+          <SuperTictactoe
+            setTurn={setTurn}
+            setWinState={setWinState}
+            turn={turn}
+            winState={winState}
+          />
+        )}
       </div>
     </div>
   )
