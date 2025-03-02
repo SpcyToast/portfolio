@@ -32,7 +32,6 @@ export default function MiniTictactoe({
 
   function makeMove(i: number) {
     const play = [...board]
-    let switchable = true
     play[i] = turn
     setBoard(play)
     for (let i = 0; i < winStates.length; i++) {
@@ -41,11 +40,12 @@ export default function MiniTictactoe({
         play[winStates[i][1]] === turn &&
         play[winStates[i][2]] === turn
       ) {
-        setWinState(true)
-        switchable = false
+        let outBoard = [...mainBoard]
+        outBoard[currentBoard] = turn
+        setMainBoard(outBoard)
       }
     }
-    switchable && switchTurn()
+    switchTurn()
   }
 
   function switchTurn() {
@@ -57,6 +57,17 @@ export default function MiniTictactoe({
       <div
         className={`super-tictactoe-contianer ${
           currentBoard % 2 === 0 && 'offset-games'
+        }`}
+        id={`${
+          state === 0
+            ? 'knots-win'
+            : state === 1
+            ? 'cross-win'
+            : activeBoard === currentBoard
+            ? 'active-board'
+            : currentBoard % 2 == 0
+            ? 'offset-games'
+            : ''
         }`}
       >
         {board.map((cell, i) => {

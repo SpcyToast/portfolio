@@ -173,12 +173,24 @@ body {
   gap: 0px;
 }
 
-.offset-games {
+.small-font {
+  font-size: small;
+}
+
+#offset-games {
   background-color: lightgreen;
 }
 
-.small-font {
-  font-size: small;
+#knots-win {
+  background-color: lightskyblue;
+}
+
+#cross-win {
+  background-color: lightcoral;
+}
+
+#active-board {
+  background-color: lavender;
 }
 
 /* window positioning */
