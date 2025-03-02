@@ -1,7 +1,6 @@
 @import 'tailwindcss';
 
 :root {
-  --tictactoe-box-sizing: 26%;
   --font-A: Arial, Helvetica, sans-serif;
   --tictactoe-window-dims: 400px;
 }
@@ -29,24 +28,28 @@ body {
   display: grid;
   grid-template-rows: 30px 370px;
   width: 400px;
+  height: auto;
   align-self: center;
   background: white;
   border: solid black 3px;
+  border-radius: 20px;
 }
 
 /* Window information bar */
-
-.window-tab {
+.window-info {
   display: flex;
   border-bottom-width: 3px;
   border-color: black;
   background-color: mediumaquamarine;
+  border-top-left-radius: 17px;
+  border-top-right-radius: 20px;
 }
 
 .window-name {
   align-content: center;
   justify-content: left;
   flex-grow: 1;
+  padding-left: 10px;
 }
 
 .window-buttons {
@@ -56,34 +59,49 @@ body {
   padding-left: 9px;
   border-left-width: 3px;
   border-color: black;
-  background-color: aqua;
+  background-color: aquamarine;
 }
 
+#last-button {
+  border-top-right-radius: 17px;
+  background-color: red;
+}
+
+/* content CSS */
+.content {
+  color: black;
+}
+
+/* tic tac toe CSS */
+/* mode selector */
 .modes {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  display: flex;
+  justify-content: space-evenly;
   align-self: center;
-  justify-self: center;
 }
 
+.modes button {
+  justify-self: center;
+  flex: 1;
+}
+
+/* tic tac toe game container */
 .tictactoe-contianer {
   display: grid;
   align-content: center;
-  justify-content: center;
-  grid-template-rows: var(--tictactoe-box-sizing) var(--tictactoe-box-sizing) var(
-      --tictactoe-box-sizing
-    );
-  grid-template-columns: var(--tictactoe-box-sizing) var(--tictactoe-box-sizing) var(
-      --tictactoe-box-sizing
-    );
-}
-
-.tictactoe-size {
-  width: var(--tictactoe-window-dims);
-  height: var(--tictactoe-window-dims);
+  justify-self: center;
+  width: 250px;
+  height: 300px;
+  grid-template-rows: 28% 28% 28%;
+  grid-template-columns: 33% 33% 33%;
+  gap: 0px;
 }
 
 .tictactoe {
-  border-width: 3px;
-  border-color: yellow;
+  border-width: 2px;
+  border-color: black;
 }
 
 .tictactoe-info {
@@ -92,16 +110,22 @@ body {
   grid-column: span 3;
 }
 
+#reset {
+  padding-bottom: 20px;
+}
+
 .tictactoe-win {
   position: absolute;
-  align-self: center;
-  justify-self: center;
+  align-content: center;
+  justify-content: center;
   background-color: black;
   color: white;
   padding: 5px;
 }
 
-#Blank {
+/* window positioning */
+
+#Tic-Tac-Toe {
   position: absolute;
   top: 50px;
   left: 50px;

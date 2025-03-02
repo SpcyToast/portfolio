@@ -1,12 +1,16 @@
 import getRandomNumber from '@/client/getRandomNumber'
 import { useEffect, useState } from 'react'
 import winStates from '@/client/data/tictactoe.json'
+import { TictactoeProps } from '@/models/window'
 
-export default function Tictactoe() {
+export default function Tictactoe({
+  setTurn,
+  setWinState,
+  winState,
+  turn,
+}: TictactoeProps) {
   const cleanBoard: number[] = [2, 2, 2, 2, 2, 2, 2, 2, 2]
   const [board, setBoard] = useState(cleanBoard)
-  const [turn, setTurn] = useState(2)
-  const [winState, setWinState] = useState(false)
 
   useEffect(() => {
     reset()
@@ -48,7 +52,7 @@ export default function Tictactoe() {
         {board.map((cell, i) => {
           return (
             <button
-              className={`item ${'item-' + (i + 1)}} tictactoe`}
+              className={`tictactoe`}
               key={i}
               onClick={() => cell === 2 && !winState && makeMove(i)}
             >
@@ -59,13 +63,10 @@ export default function Tictactoe() {
         <label className="tictactoe-info">{`It's ${
           turn === 0 ? 'O' : 'X'
         }'s Turn`}</label>
-        <button className="tictactoe-info" onClick={() => reset()}>
+        <button className="tictactoe-info" id="reset" onClick={() => reset()}>
           Reset
         </button>
       </div>
-      {winState && (
-        <h1 className="tictactoe-win">{`${turn === 0 ? 'O' : 'X'} Wins!`}</h1>
-      )}
     </>
   )
 }
