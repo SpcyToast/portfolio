@@ -22,6 +22,7 @@ export default function Home() {
     for (let i = 0; i < tasks.length; i++) {
       if (tasks[i].app === appName) {
         activation[i].status.active = true
+        activation[i].status.minimised = false
         setTasks(activation)
       }
     }
