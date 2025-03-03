@@ -51,9 +51,7 @@ export default function MiniTictactoe({
   return (
     <>
       <div
-        className={`super-tictactoe-contianer ${
-          currentBoard % 2 === 0 && 'offset-games'
-        }`}
+        className={`super-tictactoe-contianer`}
         id={`${
           state === 0
             ? 'knots-win'
