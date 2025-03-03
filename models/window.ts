@@ -13,11 +13,12 @@ export interface SuperProps {
   state: number
   currentBoard: number
   activeBoard: number
-  setActiveBoard: React.Dispatch<React.SetStateAction<number>>
+  checkActiveBoard(nextBoard: number): void
   turn: number
   setTurn: React.Dispatch<React.SetStateAction<number>>
-  checkWin(outBoard: number[]): void
+  checkWin(outBoard: number[]): boolean
   setMainBoard: React.Dispatch<React.SetStateAction<number[]>>
   mainBoard: number[]
   reseted: boolean
+  winState: boolean
 }

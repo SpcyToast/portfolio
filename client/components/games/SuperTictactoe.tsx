@@ -23,12 +23,13 @@ export default function SuperTictactoe({
   function reset() {
     setReseted(!reseted)
     setBoard(cleanBoard)
+    setActiveBoard(9)
     const start = getRandomNumber(0, 1)
     start === 0 ? setTurn(0) : setTurn(1)
     setWinState(false)
   }
 
-  function checkWin(outBoard: number[]) {
+  function checkWin(outBoard: number[]): boolean {
     for (let i = 0; i < winStates.length; i++) {
       if (
         outBoard[winStates[i][0]] === turn &&
@@ -37,8 +38,14 @@ export default function SuperTictactoe({
       ) {
         setWinState(true)
         setActiveBoard(-1)
+        return true
       }
     }
+    return false
+  }
+
+  function checkActiveBoard(nextBoard: number) {
+    board[nextBoard] === 2 ? setActiveBoard(nextBoard) : setActiveBoard(9)
   }
 
   return (
@@ -48,7 +55,7 @@ export default function SuperTictactoe({
           <MiniTictactoe
             state={state}
             activeBoard={activeBoard}
-            setActiveBoard={setActiveBoard}
+            checkActiveBoard={checkActiveBoard}
             currentBoard={i}
             turn={turn}
             setTurn={setTurn}
@@ -56,6 +63,7 @@ export default function SuperTictactoe({
             setMainBoard={setBoard}
             mainBoard={board}
             reseted={reseted}
+            winState={winState}
             key={i}
           />
         ))}

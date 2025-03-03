@@ -1,4 +1,3 @@
-import getRandomNumber from '@/client/components/hooks/getRandomNumber'
 import { useEffect, useState } from 'react'
 import winStates from '@/client/data/tictactoe.json'
 import { SuperProps } from '@/models/window'
@@ -7,13 +6,14 @@ export default function MiniTictactoe({
   state,
   currentBoard,
   activeBoard,
-  setActiveBoard,
+  checkActiveBoard,
   turn,
   setTurn,
   checkWin,
   setMainBoard,
   mainBoard,
   reseted,
+  winState,
 }: SuperProps) {
   const cleanBoard: number[] = [2, 2, 2, 2, 2, 2, 2, 2, 2]
   const [board, setBoard] = useState(cleanBoard)
@@ -24,8 +24,11 @@ export default function MiniTictactoe({
 
   function makeMove(i: number) {
     const play = [...board]
+    let win = winState
     play[i] = turn
     setBoard(play)
+    checkActiveBoard(i)
+    console.log(activeBoard, mainBoard)
     for (let i = 0; i < winStates.length; i++) {
       if (
         play[winStates[i][0]] === turn &&
@@ -35,14 +38,10 @@ export default function MiniTictactoe({
         let outBoard = [...mainBoard]
         outBoard[currentBoard] = turn
         setMainBoard(outBoard)
-        checkWin(outBoard)
+        win = checkWin(outBoard)
       }
     }
-    switchTurn()
-  }
-
-  function switchTurn() {
-    turn === 0 ? setTurn(1) : setTurn(0)
+    !win && turn === 0 ? setTurn(1) : setTurn(0)
   }
 
   return (
@@ -69,7 +68,12 @@ export default function MiniTictactoe({
               className={`tictactoe`}
               id={cell === 0 ? 'O' : 'X'}
               key={i}
-              onClick={() => cell === 2 && state == 2 && makeMove(i)}
+              onClick={() =>
+                (activeBoard === currentBoard || activeBoard === 9) &&
+                cell === 2 &&
+                state === 2 &&
+                makeMove(i)
+              }
             >
               <p className="abril-fatface-regular small-font">
                 {cell === 0 ? 'O' : cell === 1 ? 'X' : ''}
