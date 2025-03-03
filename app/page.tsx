@@ -9,7 +9,7 @@ export default function Home() {
   const [tasks, setTasks] = useState(defaultTaskbar)
   const [start, setStart] = useState(false)
 
-  function useFocus(appName: string) {
+  function launch(appName: string) {
     const activation: Taskbar[] = [...tasks]
     for (let i = 0; i < tasks.length; i++) {
       if (tasks[i].app === appName) {
@@ -18,7 +18,12 @@ export default function Home() {
         setTasks(activation)
       }
     }
+    removeFocus()
+  }
+
+  function removeFocus() {
     setFocus('')
+    setStart(false)
   }
 
   function minimised(app: string) {
@@ -37,11 +42,12 @@ export default function Home() {
           <button
             key={`application-icon-${i}`}
             className={`${focus === application.app && 'focus'}`}
-            onClick={() =>
+            onClick={() => {
               focus === application.app
-                ? useFocus(application.app)
+                ? launch(application.app)
                 : setFocus(application.app)
-            }
+              setStart(false)
+            }}
           >
             <img src={application.icon} className="icon" />
             <p style={{ justifySelf: 'left', fontSize: '10px' }}>Tic-Tac-Toe</p>
@@ -60,13 +66,29 @@ export default function Home() {
       )}
       <footer>
         <div className="taskbar">
-          <button id="start" onClick={() => setStart(!start)}>
+          <button
+            id="start"
+            onClick={() => {
+              {
+                setStart(!start)
+                setFocus('')
+              }
+            }}
+          >
             Start
           </button>
           {tasks.map(
             (app, i) =>
               app.status.active && (
-                <button key={`taskbar-${i}`} onClick={() => minimised(app.app)}>
+                <button
+                  key={`taskbar-${i}`}
+                  onClick={() => {
+                    {
+                      minimised(app.app)
+                      removeFocus()
+                    }
+                  }}
+                >
                   <img
                     src={`/${app.icon}`}
                     className="icons"
@@ -78,7 +100,13 @@ export default function Home() {
         </div>
         <div className={`start-menu ${!start && 'closed'}`}>
           {tasks.map((app, i) => (
-            <button key={`start-menu-${i}`} className="start-app">
+            <button
+              key={`start-menu-${i}`}
+              className="start-app"
+              onClick={() => {
+                launch(app.app)
+              }}
+            >
               <img src={app.icon} className="start-app-image" />
               <h2>{app.label}</h2>
             </button>
