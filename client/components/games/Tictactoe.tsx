@@ -52,7 +52,9 @@ export default function Tictactoe({
         {board.map((cell, i) => {
           return (
             <button
-              className={`tictactoe`}
+              className={`tictactoe ${
+                i % 2 === 0 ? 'offset-games' : ''
+              } game-borders`}
               id={cell === 0 ? 'O' : 'X'}
               key={i}
               onClick={() => cell === 2 && !winState && makeMove(i)}

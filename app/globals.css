@@ -177,8 +177,12 @@ body {
   font-size: small;
 }
 
-#offset-games {
-  background-color: lightgreen;
+.game-borders {
+  margin: 1px;
+}
+
+.offset-games {
+  background-color: lavender;
 }
 
 #knots-win {
