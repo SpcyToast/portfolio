@@ -1,8 +1,15 @@
 @import 'tailwindcss';
 
+html {
+  max-width: 100vw;
+  max-height: 100vh;
+}
+
 :root {
   --font-A: Arial, Helvetica, sans-serif;
   --tictactoe-window-dims: 400px;
+  --theme-colour-A: mediumaquamarine;
+  --theme-colour-B: aquamarine;
 }
 
 body {
@@ -50,7 +57,7 @@ body {
   align-self: center;
   background: white;
   border: solid black 3px;
-  border-radius: 20px;
+  border-radius: 5px;
 }
 
 /* Window information bar */
@@ -58,9 +65,9 @@ body {
   display: flex;
   border-bottom-width: 3px;
   border-color: black;
-  background-color: mediumaquamarine;
-  border-top-left-radius: 17px;
-  border-top-right-radius: 20px;
+  background-color: var(--theme-colour-A);
+  border-top-left-radius: 1px;
+  border-top-right-radius: 3px;
 }
 
 .window-name {
@@ -77,12 +84,12 @@ body {
   padding-left: 9px;
   border-left-width: 3px;
   border-color: black;
-  background-color: aquamarine;
+  background-color: var(--theme-colour-B);
   font-size: large;
 }
 
 #last-button {
-  border-top-right-radius: 17px;
+  border-top-right-radius: 1px;
   background-color: red;
 }
 
@@ -203,4 +210,41 @@ body {
   position: absolute;
   top: 50px;
   left: 50px;
+}
+
+/* Footer or Taskbar */
+footer {
+  background-color: var(--theme-colour-A);
+  height: 35px;
+  position: absolute;
+  width: 100vw;
+  bottom: 0px;
+  align-content: center;
+  padding-left: 3px;
+}
+
+#start {
+  background-color: var(--theme-colour-B);
+  padding: 2px;
+  padding-left: 10px;
+  padding-right: 100px;
+}
+
+.taskbar {
+  display: flex;
+  gap: 7px;
+}
+
+.icons {
+  max-width: 30px;
+  padding: 2px;
+  background-color: var(--theme-colour-B);
+}
+
+#minimise-app {
+  display: none;
+}
+
+#minimise {
+  background-color: var(--theme-colour-A);
 }

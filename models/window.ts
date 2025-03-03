@@ -1,5 +1,8 @@
 export interface Props {
-  setWindow: React.Dispatch<React.SetStateAction<boolean>>
+  setTasks: React.Dispatch<React.SetStateAction<Array<Taskbar>>>
+  tasks: Array<Taskbar>
+  taskName: string
+  windowName: string
 }
 
 export interface TictactoeProps {
@@ -21,4 +24,14 @@ export interface SuperProps {
   mainBoard: number[]
   reseted: boolean
   winState: boolean
+}
+
+export interface Taskbar {
+  app: string
+  icon: string
+  status: Tasks
+}
+export interface Tasks {
+  active: boolean
+  minimised: boolean
 }

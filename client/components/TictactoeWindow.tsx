@@ -1,11 +1,15 @@
 import { useState } from 'react'
 import Tictactoe from '@/client/components/games/Tictactoe'
-import { Props } from '@/models/window'
+import { Props, Taskbar } from '@/models/window'
 import OnlyThree from './games/OnlyThree'
 import SuperTictactoe from './games/SuperTictactoe'
 
-export default function TictactoeWindow({ setWindow }: Props) {
-  const windowName: string = 'Tic-Tac-Toe'
+export default function TictactoeWindow({
+  setTasks,
+  tasks,
+  taskName,
+  windowName,
+}: Props) {
   const modes: string[] = ['Tic-Tac-Toe', 'Max 3 Each', 'Super Tic-Tac-Toe']
   const [selected, setSelected] = useState(0)
   const [turn, setTurn] = useState(2)
@@ -19,20 +23,40 @@ export default function TictactoeWindow({ setWindow }: Props) {
       : setSelected(selected + movement)
   }
 
+  function closeWindow() {
+    const deactivate: Taskbar[] = [...tasks]
+    const appIndex: number = deactivate.findIndex(
+      (appName) => appName.app === taskName
+    )
+    deactivate[appIndex].status.active = false
+    setTasks(deactivate)
+  }
+
+  function minimiseWindow() {
+    const minimise: Taskbar[] = [...tasks]
+    const appIndex: number = minimise.findIndex(
+      (appName) => appName.app === taskName
+    )
+    minimise[appIndex].status.minimised = true
+    setTasks(minimise)
+  }
+
   return (
     <div className="window" id={windowName}>
       <span className="window-info">
         <label className="window-name" draggable={true}>
           {windowName}
         </label>
-        <button className="window-buttons">_</button>
+        <button className="window-buttons" onClick={() => minimiseWindow()}>
+          _
+        </button>
         <button className="window-buttons">□</button>
         <button
           className="window-buttons"
           id="last-button"
-          onClick={() => setWindow(false)}
+          onClick={() => closeWindow()}
         >
-          X
+          x
         </button>
       </span>
       <div className="content">
