@@ -10,7 +10,7 @@ export default function MiniTictactoe({
   setActiveBoard,
   turn,
   setTurn,
-  setWinState,
+  checkWin,
   setMainBoard,
   mainBoard,
   reseted,
@@ -19,16 +19,8 @@ export default function MiniTictactoe({
   const [board, setBoard] = useState(cleanBoard)
 
   useEffect(() => {
-    reset()
-  }, [reseted])
-
-  // randomise starting player at the start of every game
-  function reset() {
     setBoard(cleanBoard)
-    const start = getRandomNumber(0, 1)
-    start === 0 ? setTurn(0) : setTurn(1)
-    setWinState(false)
-  }
+  }, [reseted])
 
   function makeMove(i: number) {
     const play = [...board]
@@ -43,6 +35,7 @@ export default function MiniTictactoe({
         let outBoard = [...mainBoard]
         outBoard[currentBoard] = turn
         setMainBoard(outBoard)
+        checkWin(outBoard)
       }
     }
     switchTurn()

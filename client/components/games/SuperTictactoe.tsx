@@ -28,24 +28,36 @@ export default function SuperTictactoe({
     setWinState(false)
   }
 
+  function checkWin(outBoard: number[]) {
+    for (let i = 0; i < winStates.length; i++) {
+      if (
+        outBoard[winStates[i][0]] === turn &&
+        outBoard[winStates[i][1]] === turn &&
+        outBoard[winStates[i][2]] === turn
+      ) {
+        setWinState(true)
+        setActiveBoard(-1)
+      }
+    }
+  }
+
   return (
     <>
       <div className="tictactoe-contianer">
         {board.map((state, i) => (
-          <>
-            <MiniTictactoe
-              state={state}
-              activeBoard={activeBoard}
-              setActiveBoard={setActiveBoard}
-              currentBoard={i}
-              turn={turn}
-              setTurn={setTurn}
-              setWinState={setWinState}
-              setMainBoard={setBoard}
-              mainBoard={board}
-              reseted={reseted}
-            />
-          </>
+          <MiniTictactoe
+            state={state}
+            activeBoard={activeBoard}
+            setActiveBoard={setActiveBoard}
+            currentBoard={i}
+            turn={turn}
+            setTurn={setTurn}
+            checkWin={checkWin}
+            setMainBoard={setBoard}
+            mainBoard={board}
+            reseted={reseted}
+            key={i}
+          />
         ))}
         <label className="tictactoe-info" id="turn">{`It's ${
           turn === 0 ? 'O' : 'X'
