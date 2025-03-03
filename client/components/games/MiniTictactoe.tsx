@@ -41,7 +41,11 @@ export default function MiniTictactoe({
         win = checkWin(outBoard)
       }
     }
-    !win && turn === 0 ? setTurn(1) : setTurn(0)
+    !win && switchTurn()
+  }
+
+  function switchTurn() {
+    turn === 0 ? setTurn(1) : setTurn(0)
   }
 
   return (
