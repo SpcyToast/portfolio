@@ -78,7 +78,7 @@ export default function OnlyThree({
               <p
                 className="abril-fatface-regular"
                 id={
-                  turn === 0
+                  winState === false && turn === 0
                     ? o[2] === i
                       ? 'last'
                       : ''

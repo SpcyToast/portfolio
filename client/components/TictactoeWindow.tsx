@@ -37,9 +37,9 @@ export default function TictactoeWindow({ setWindow }: Props) {
       </span>
       <div className="content">
         <span className="modes">
-          <button onClick={() => rotate(1)}>{`←`}</button>
+          <button onClick={() => rotate(-1)}>{`←`}</button>
           <label>{modes[selected]}</label>
-          <button onClick={() => rotate(-1)}>{`→`}</button>
+          <button onClick={() => rotate(1)}>{`→`}</button>
         </span>{' '}
         <br />
         {winState && (
