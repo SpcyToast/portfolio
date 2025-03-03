@@ -30,7 +30,11 @@ body {
 .homepage {
   display: grid;
   padding: 20px;
-  grid-row: 50px;
+  grid-template-columns: repeat(25, 65px);
+  grid-template-rows: repeat(9, 65px);
+  grid-auto-flow: column;
+  align-content: center;
+  justify-items: center;
   gap: 10px;
 }
 
