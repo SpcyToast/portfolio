@@ -50,10 +50,21 @@ export default function Home() {
             }}
           >
             <img src={application.icon} className="icon" />
-            <p className="icon-label">Tic-Tac-Toe</p>
+            <p className="icon-label">{application.label}</p>
           </button>
         ))}
       </div>
+
+      {tasks[1].status.active && (
+        <div id={tasks[1].status.minimised ? 'minimise-app' : ''}>
+          <Window
+            setTasks={setTasks}
+            tasks={tasks}
+            taskName={tasks[1].app}
+            windowName={tasks[1].label}
+          />
+        </div>
+      )}
 
       {tasks[0].status.active && (
         <div id={tasks[0].status.minimised ? 'minimise-app' : ''}>

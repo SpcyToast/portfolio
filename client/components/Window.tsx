@@ -1,5 +1,8 @@
 import { Props, Taskbar } from '@/models/window'
 import TicTacToeWindow from './TicTacToeWindow'
+import MixTape from './MixTape'
+import { useState } from 'react'
+import Link from 'next/link'
 
 export default function Window({
   setTasks,
@@ -7,6 +10,8 @@ export default function Window({
   taskName,
   windowName,
 }: Props) {
+  const [route, setRoute] = useState('https://google.com')
+
   function closeWindow() {
     const deactivate: Taskbar[] = [...tasks]
     const appIndex: number = deactivate.findIndex(
@@ -34,7 +39,9 @@ export default function Window({
         <button className="window-buttons" onClick={() => minimiseWindow()}>
           _
         </button>
-        <button className="window-buttons">□</button>
+        <Link href={route} rel="noopener noreferrer" target="_blank">
+          <button className="window-buttons">?</button>
+        </Link>
         <button
           className="window-buttons"
           id="last-button"
@@ -44,7 +51,10 @@ export default function Window({
         </button>
       </span>
       <div className="content">
-        <TicTacToeWindow />
+        {windowName === 'Tic-Tac-Toe' && (
+          <TicTacToeWindow setRoute={setRoute} />
+        )}
+        {windowName === 'Mix Tape' && <MixTape />}
       </div>
     </div>
   )

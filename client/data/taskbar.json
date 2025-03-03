@@ -1,5 +1,14 @@
 [
   {
+    "app": "mixtape",
+    "label": "Mix Tape",
+    "icon": "mixtape.svg",
+    "status": {
+      "active": false,
+      "minimised": false
+    }
+  },
+  {
     "app": "tictactoe",
     "label": "Tic-Tac-Toe",
     "icon": "tictactoe.svg",

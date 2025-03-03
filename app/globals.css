@@ -44,7 +44,7 @@ body {
 }
 
 .icon-label {
-  justify-self: left;
+  justify-self: center;
   font-size: 10px;
 }
 
@@ -237,6 +237,7 @@ footer {
   padding: 2px;
   padding-left: 10px;
   padding-right: 100px;
+  border-radius: 5px;
 }
 
 .taskbar {
@@ -248,6 +249,7 @@ footer {
   max-width: 30px;
   padding: 2px;
   background-color: var(--theme-colour-B);
+  border-radius: 5px;
 }
 
 #minimise-app {
@@ -276,9 +278,9 @@ footer {
 
 .start-app {
   display: flex;
-  align-items: top;
+  align-items: center;
   gap: 10px;
-  font-size: xx-large;
+  font-size: larger;
   background-color: var(--theme-colour-A);
   border-radius: 5px;
 }

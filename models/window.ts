@@ -12,6 +12,10 @@ export interface TictactoeProps {
   turn: number
 }
 
+export interface WindowProps {
+  setRoute: React.Dispatch<React.SetStateAction<string>>
+}
+
 export interface SuperProps {
   state: number
   currentBoard: number
