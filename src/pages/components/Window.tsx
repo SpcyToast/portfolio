@@ -54,7 +54,7 @@ export default function Window({
         {windowName === 'Tic-Tac-Toe' && (
           <TicTacToeWindow setRoute={setRoute} />
         )}
-        {windowName === 'Mix Tape' && <MixTape />}
+        {windowName === 'Mix Tape' && <MixTape setRoute={setRoute} />}
       </div>
     </div>
   )

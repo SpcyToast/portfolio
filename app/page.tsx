@@ -1,8 +1,8 @@
 'use client'
-import Window from '@/client/components/Window'
+import Window from '@/src/pages/components/Window'
 import { useState } from 'react'
 import { Taskbar } from '@/models/window'
-import defaultTaskbar from '@/client/data/taskbar.json'
+import defaultTaskbar from '@/src/data/taskbar.json'
 
 export default function Home() {
   const [focus, setFocus] = useState('')

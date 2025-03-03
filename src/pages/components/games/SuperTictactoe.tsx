@@ -1,6 +1,6 @@
-import getRandomNumber from '@/client/components/hooks/getRandomNumber'
+import getRandomNumber from '@/src/pages/components/hooks/getRandomNumber'
 import { useEffect, useState } from 'react'
-import winStates from '@/client/data/tictactoe.json'
+import winStates from '@/src/data/tictactoe.json'
 import { TictactoeProps } from '@/models/window'
 import MiniTictactoe from './MiniTictactoe'
 
