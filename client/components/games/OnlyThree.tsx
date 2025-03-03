@@ -45,7 +45,6 @@ export default function OnlyThree({
         : (newBoard[o[j] as number] = 0)
     }
     newBoard.pop()
-    console.log(newBoard)
     setBoard(newBoard)
     for (let i = 0; i < winStates.length; i++) {
       if (
@@ -55,6 +54,7 @@ export default function OnlyThree({
       ) {
         setWinState(true)
         switchable = false
+        turn === 0 ? setO(cleanTurns) : setX(cleanTurns)
       }
     }
     switchable && switchTurn()
@@ -78,7 +78,7 @@ export default function OnlyThree({
               <p
                 className="abril-fatface-regular"
                 id={
-                  winState === false && turn === 0
+                  turn === 0
                     ? o[2] === i
                       ? 'last'
                       : ''
