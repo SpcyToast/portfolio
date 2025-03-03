@@ -2,20 +2,12 @@
 import TictactoeWindow from '@/client/components/TictactoeWindow'
 import { useState } from 'react'
 import { Taskbar } from '@/models/window'
+import defaultTaskbar from '@/client/data/taskbar.json'
 
 export default function Home() {
-  const defaultTaskbar: Taskbar[] = [
-    {
-      app: 'tictactoe',
-      icon: 'tictactoe.svg',
-      status: {
-        active: false,
-        minimised: false,
-      },
-    },
-  ]
   const [focus, setFocus] = useState('')
   const [tasks, setTasks] = useState(defaultTaskbar)
+  const [start, setStart] = useState(false)
 
   function useFocus(appName: string) {
     const activation: Taskbar[] = [...tasks]
@@ -41,17 +33,20 @@ export default function Home() {
   return (
     <>
       <div className="homepage">
-        <button
-          className={`${focus === 'tictactoe' && 'focus'}`}
-          onClick={() =>
-            focus === 'tictactoe'
-              ? useFocus('tictactoe')
-              : setFocus('tictactoe')
-          }
-        >
-          <img src="/tictactoe.svg" className="icon" />
-          <p style={{ justifySelf: 'left', fontSize: '10px' }}>Tic-Tac-Toe</p>
-        </button>
+        {tasks.map((application, i) => (
+          <button
+            key={`application-icon-${i}`}
+            className={`${focus === application.app && 'focus'}`}
+            onClick={() =>
+              focus === application.app
+                ? useFocus(application.app)
+                : setFocus(application.app)
+            }
+          >
+            <img src={application.icon} className="icon" />
+            <p style={{ justifySelf: 'left', fontSize: '10px' }}>Tic-Tac-Toe</p>
+          </button>
+        ))}
       </div>
       {tasks[0].status.active && (
         <div id={tasks[0].status.minimised ? 'minimise-app' : ''}>
@@ -65,11 +60,13 @@ export default function Home() {
       )}
       <footer>
         <div className="taskbar">
-          <button id="start">Start</button>
+          <button id="start" onClick={() => setStart(!start)}>
+            Start
+          </button>
           {tasks.map(
             (app, i) =>
               app.status.active && (
-                <button key={i} onClick={() => minimised(app.app)}>
+                <button key={`taskbar-${i}`} onClick={() => minimised(app.app)}>
                   <img
                     src={`/${app.icon}`}
                     className="icons"
@@ -78,6 +75,14 @@ export default function Home() {
                 </button>
               )
           )}
+        </div>
+        <div className={`start-menu ${!start && 'closed'}`}>
+          {tasks.map((app, i) => (
+            <button key={`start-menu-${i}`} className="start-app">
+              <img src={app.icon} className="start-app-image" />
+              <h2>{app.label}</h2>
+            </button>
+          ))}
         </div>
       </footer>
     </>

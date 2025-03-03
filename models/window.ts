@@ -28,6 +28,7 @@ export interface SuperProps {
 
 export interface Taskbar {
   app: string
+  label: string
   icon: string
   status: Tasks
 }
