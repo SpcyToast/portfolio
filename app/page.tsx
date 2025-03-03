@@ -1,5 +1,5 @@
 'use client'
-import TictactoeWindow from '@/client/components/TictactoeWindow'
+import Window from '@/client/components/Window'
 import { useState } from 'react'
 import { Taskbar } from '@/models/window'
 import defaultTaskbar from '@/client/data/taskbar.json'
@@ -54,16 +54,18 @@ export default function Home() {
           </button>
         ))}
       </div>
+
       {tasks[0].status.active && (
         <div id={tasks[0].status.minimised ? 'minimise-app' : ''}>
-          <TictactoeWindow
+          <Window
             setTasks={setTasks}
             tasks={tasks}
             taskName={tasks[0].app}
-            windowName={'Tic-Tac-Toe'}
+            windowName={tasks[0].label}
           />
         </div>
       )}
+
       <footer>
         <div className="taskbar">
           <button
