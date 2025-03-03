@@ -50,7 +50,7 @@ export default function Home() {
             }}
           >
             <img src={application.icon} className="icon" />
-            <p style={{ justifySelf: 'left', fontSize: '10px' }}>Tic-Tac-Toe</p>
+            <p className="icon-label">Tic-Tac-Toe</p>
           </button>
         ))}
       </div>

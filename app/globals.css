@@ -43,6 +43,11 @@ body {
   height: 50px;
 }
 
+.icon-label {
+  justify-self: left;
+  font-size: 10px;
+}
+
 .focus {
   filter: drop-shadow(2px 2px 0.25px palegoldenrod)
     drop-shadow(-2px 2px 0.25px palegoldenrod)
