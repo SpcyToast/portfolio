@@ -44,7 +44,6 @@ export default function Home() {
       windowShift.unshift(front)
       setWindowOrder(windowShift)
     }
-    console.log(windowOrder, 'front', front)
   }
 
   function minimiseWindows(minimise: Taskbar[], back: number) {
