@@ -3,8 +3,8 @@
     "app": "mixtape",
     "label": "Mix Tape",
     "icon": "mixtape.svg",
-    "positionX": 100,
-    "positionY": 100,
+    "positionX": "100px",
+    "positionY": "100px",
     "status": {
       "active": false,
       "minimised": false
@@ -14,8 +14,8 @@
     "app": "tictactoe",
     "label": "Tic-Tac-Toe",
     "icon": "tictactoe.svg",
-    "positionX": 50,
-    "positionY": 50,
+    "positionX":"50px",
+    "positionY":"50px",
     "status": {
       "active": false,
       "minimised": false

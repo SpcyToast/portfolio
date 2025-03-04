@@ -88,7 +88,13 @@ export default function Home() {
       </div>
 
       {windowOrder[1] !== -1 && tasks[windowOrder[1]].status.active && (
-        <div id={tasks[windowOrder[1]].status.minimised ? 'minimise-app' : ''}>
+        <div
+          id={tasks[windowOrder[1]].status.minimised ? 'minimise-app' : ''}
+          style={{
+            left: tasks[windowOrder[1]].positionX,
+            top: tasks[windowOrder[1]].positionY,
+          }}
+        >
           <Window
             setTasks={setTasks}
             tasks={tasks}
@@ -101,7 +107,13 @@ export default function Home() {
       )}
 
       {windowOrder[0] !== -1 && tasks[windowOrder[0]].status.active && (
-        <div id={tasks[windowOrder[0]].status.minimised ? 'minimise-app' : ''}>
+        <div
+          id={tasks[windowOrder[0]].status.minimised ? 'minimise-app' : ''}
+          style={{
+            left: tasks[windowOrder[0]].positionX,
+            top: tasks[windowOrder[0]].positionY,
+          }}
+        >
           <Window
             setTasks={setTasks}
             tasks={tasks}

@@ -37,8 +37,8 @@ export interface Taskbar {
   label: string
   icon: string
   status: Tasks
-  positionX: number
-  positionY: number
+  positionX: string
+  positionY: string
 }
 export interface Tasks {
   active: boolean

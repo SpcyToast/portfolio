@@ -2,7 +2,7 @@ import { Props, Taskbar } from '@/models/window'
 import TicTacToeWindow from './TicTacToeWindow'
 import MixTape from './MixTape'
 import Link from 'next/link'
-import { MouseEvent, useEffect, useState } from 'react'
+import { MouseEvent, useState } from 'react'
 
 export default function Window({
   setTasks,
@@ -19,12 +19,10 @@ export default function Window({
     (appName) => appName.app === taskName
   )
 
-  useEffect(() => {
-    if (window && movable) {
-      window.style.left = tasks[appIndex].positionX + 'px'
-      window.style.top = tasks[appIndex].positionX + 'px'
-    }
-  }, [])
+  if (window && !movable) {
+    window.style.left = tasks[appIndex].positionX
+    window.style.top = tasks[appIndex].positionY
+  }
 
   function closeWindow() {
     const deactivate: Taskbar[] = [...tasks]
@@ -39,12 +37,21 @@ export default function Window({
   }
 
   function moveWindow(e: MouseEvent<HTMLLabelElement>) {
-    const movement: Taskbar[] = [...tasks]
     if (window && movable) {
-      movement[appIndex].positionX = window.offsetLeft + e.movementX
-      movement[appIndex].positionY = window.offsetTop + e.movementY
       window.style.left = window.offsetLeft + e.movementX + 'px'
       window.style.top = window.offsetTop + e.movementY + 'px'
+    }
+  }
+
+  function endMovement() {
+    setMovable(false)
+    const movement: Taskbar[] = [...tasks]
+    if (window) {
+      const moveLeft: string = window.style.left
+      const moveTop: string = window.style.top
+      console.log(moveLeft, moveTop)
+      movement[appIndex].positionX = moveLeft
+      movement[appIndex].positionY = moveTop
       setTasks(movement)
     }
   }
@@ -56,8 +63,8 @@ export default function Window({
           className="window-name"
           onMouseDown={() => setMovable(true)}
           onMouseMove={(e) => moveWindow(e)}
-          onMouseUp={() => setMovable(false)}
-          onMouseLeave={() => setMovable(false)}
+          onMouseUp={() => endMovement()}
+          onMouseLeave={() => endMovement()}
           onClick={() => windowLayers(windowNum)}
         >
           {windowName}
