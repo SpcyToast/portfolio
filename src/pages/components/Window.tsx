@@ -15,33 +15,19 @@ export default function Window({
   const window = document.getElementById(taskName)
   const [route, setRoute] = useState('https://google.com')
   const [movable, setMovable] = useState(false)
-  // const appIndex: number = [...tasks].findIndex(
-  //   (appName) => appName.app === taskName
-  // )
+  const appIndex: number = [...tasks].findIndex(
+    (appName) => appName.app === taskName
+  )
 
   function closeWindow() {
     const deactivate: Taskbar[] = [...tasks]
-    const appIndex: number = deactivate.findIndex(
-      (appName) => appName.app === taskName
-    )
     deactivate[appIndex].status.active = false
     setTasks(deactivate)
   }
 
   function minimiseWindow() {
     const minimise: Taskbar[] = [...tasks]
-    const appIndex: number = minimise.findIndex(
-      (appName) => appName.app === taskName
-    )
     minimise[appIndex].status.minimised = true
-    // console.log(
-    //   'why',
-    //   minimiseWin[appIndex].status.minimised,
-    //   tasks[appIndex].status.minimised,
-    //   minimiseWin,
-    //   tasks,
-    //   appIndex
-    // )
     setTasks(minimise)
   }
 
@@ -53,11 +39,7 @@ export default function Window({
   }
 
   return (
-    <div
-      className="window"
-      id={taskName}
-      onClick={() => windowLayers(windowNum)}
-    >
+    <div className="window" id={taskName}>
       <span className="window-info">
         <label
           className="window-name"
@@ -65,6 +47,7 @@ export default function Window({
           onMouseMove={(e) => moveWindow(e)}
           onMouseUp={() => setMovable(false)}
           onMouseLeave={() => setMovable(false)}
+          onClick={() => windowLayers(windowNum)}
         >
           {windowName}
         </label>
@@ -82,7 +65,7 @@ export default function Window({
           x
         </button>
       </span>
-      <div className="content">
+      <div className="content" onClick={() => windowLayers(windowNum)}>
         {windowName === 'Tic-Tac-Toe' && (
           <TicTacToeWindow setRoute={setRoute} />
         )}
