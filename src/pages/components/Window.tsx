@@ -31,7 +31,7 @@ export default function Window({
   }
 
   return (
-    <div className="window" id={windowName}>
+    <div className="window" id={taskName}>
       <span className="window-info">
         <label className="window-name" draggable={true}>
           {windowName}

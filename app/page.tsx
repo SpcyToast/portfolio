@@ -5,9 +5,11 @@ import { Taskbar } from '@/models/window'
 import defaultTaskbar from '@/src/data/taskbar.json'
 
 export default function Home() {
+  const maxWindows: number[] = Array(defaultTaskbar.length).fill(-1)
   const [focus, setFocus] = useState('')
   const [tasks, setTasks] = useState(defaultTaskbar)
   const [start, setStart] = useState(false)
+  const [windowOrder, setWindowOrder] = useState(maxWindows)
 
   function launch(appName: string) {
     const activation: Taskbar[] = [...tasks]
@@ -16,14 +18,10 @@ export default function Home() {
         activation[i].status.active = true
         activation[i].status.minimised = false
         setTasks(activation)
+        windowLayers(i)
       }
     }
     removeFocus()
-  }
-
-  function removeFocus() {
-    setFocus('')
-    setStart(false)
   }
 
   function minimised(app: string) {
@@ -32,7 +30,39 @@ export default function Home() {
       (appName) => appName.app === app
     )
     minimise[appIndex].status.minimised = !minimise[appIndex].status.minimised
+    appIndex === windowOrder[0]
+      ? minimisWindows(minimise, appIndex)
+      : windowLayers(appIndex)
+    console.log(appIndex, windowOrder[0])
+  }
+
+  function windowLayers(front: number) {
+    const windowShift: number[] = [...windowOrder]
+    if (windowShift[0] !== front) {
+      windowShift.pop()
+      windowShift.unshift(front)
+      setWindowOrder(windowShift)
+    }
+    console.log(windowOrder, 'front', front)
+  }
+
+  function minimisWindows(minimise: Taskbar[], back: number) {
     setTasks(minimise)
+    const windowShift: number[] = [...windowOrder]
+    const windowIndex: number = windowShift.findIndex(
+      (window) => window === back
+    )
+    if (windowIndex !== windowShift.length - 1) {
+      windowShift.filter((window) => window === back)
+      windowShift.push(back)
+      setWindowOrder(windowShift)
+    }
+    console.log(windowOrder, 'back', back)
+  }
+
+  function removeFocus() {
+    setFocus('')
+    setStart(false)
   }
 
   return (
@@ -55,24 +85,24 @@ export default function Home() {
         ))}
       </div>
 
-      {tasks[1].status.active && (
-        <div id={tasks[1].status.minimised ? 'minimise-app' : ''}>
+      {windowOrder[1] !== -1 && tasks[windowOrder[1]].status.active && (
+        <div id={tasks[windowOrder[1]].status.minimised ? 'minimise-app' : ''}>
           <Window
             setTasks={setTasks}
             tasks={tasks}
-            taskName={tasks[1].app}
-            windowName={tasks[1].label}
+            taskName={tasks[windowOrder[1]].app}
+            windowName={tasks[windowOrder[1]].label}
           />
         </div>
       )}
 
-      {tasks[0].status.active && (
-        <div id={tasks[0].status.minimised ? 'minimise-app' : ''}>
+      {windowOrder[0] !== -1 && tasks[windowOrder[0]].status.active && (
+        <div id={tasks[windowOrder[0]].status.minimised ? 'minimise-app' : ''}>
           <Window
             setTasks={setTasks}
             tasks={tasks}
-            taskName={tasks[0].app}
-            windowName={tasks[0].label}
+            taskName={tasks[windowOrder[0]].app}
+            windowName={tasks[windowOrder[0]].label}
           />
         </div>
       )}
