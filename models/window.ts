@@ -3,6 +3,8 @@ export interface Props {
   tasks: Array<Taskbar>
   taskName: string
   windowName: string
+  windowLayers(Window: number): void
+  windowNum: number
 }
 
 export interface TictactoeProps {

@@ -94,6 +94,8 @@ export default function Home() {
             tasks={tasks}
             taskName={tasks[windowOrder[1]].app}
             windowName={tasks[windowOrder[1]].label}
+            windowLayers={windowLayers}
+            windowNum={windowOrder[1]}
           />
         </div>
       )}
@@ -105,6 +107,8 @@ export default function Home() {
             tasks={tasks}
             taskName={tasks[windowOrder[0]].app}
             windowName={tasks[windowOrder[0]].label}
+            windowLayers={windowLayers}
+            windowNum={windowOrder[0]}
           />
         </div>
       )}

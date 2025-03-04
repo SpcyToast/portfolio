@@ -1,16 +1,23 @@
 import { Props, Taskbar } from '@/models/window'
 import TicTacToeWindow from './TicTacToeWindow'
 import MixTape from './MixTape'
-import { useState } from 'react'
 import Link from 'next/link'
+import { MouseEvent, useState } from 'react'
 
 export default function Window({
   setTasks,
   tasks,
   taskName,
   windowName,
+  windowLayers,
+  windowNum,
 }: Props) {
+  const window = document.getElementById(taskName)
   const [route, setRoute] = useState('https://google.com')
+  const [movable, setMovable] = useState(false)
+  // const appIndex: number = [...tasks].findIndex(
+  //   (appName) => appName.app === taskName
+  // )
 
   function closeWindow() {
     const deactivate: Taskbar[] = [...tasks]
@@ -27,13 +34,38 @@ export default function Window({
       (appName) => appName.app === taskName
     )
     minimise[appIndex].status.minimised = true
+    // console.log(
+    //   'why',
+    //   minimiseWin[appIndex].status.minimised,
+    //   tasks[appIndex].status.minimised,
+    //   minimiseWin,
+    //   tasks,
+    //   appIndex
+    // )
     setTasks(minimise)
   }
 
+  function moveWindow(e: MouseEvent<HTMLLabelElement>) {
+    if (window && movable) {
+      window.style.left = window.offsetLeft + e.movementX + 'px'
+      window.style.top = window.offsetTop + e.movementY + 'px'
+    }
+  }
+
   return (
-    <div className="window" id={taskName}>
+    <div
+      className="window"
+      id={taskName}
+      onClick={() => windowLayers(windowNum)}
+    >
       <span className="window-info">
-        <label className="window-name" draggable={true}>
+        <label
+          className="window-name"
+          onMouseDown={() => setMovable(true)}
+          onMouseMove={(e) => moveWindow(e)}
+          onMouseUp={() => setMovable(false)}
+          onMouseLeave={() => setMovable(false)}
+        >
           {windowName}
         </label>
         <button className="window-buttons" onClick={() => minimiseWindow()}>
