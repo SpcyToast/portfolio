@@ -4,7 +4,7 @@
     "label": "Mix Tape",
     "icon": "mixtape.svg",
     "positionX": 100,
-    "positiony": 100,
+    "positionY": 100,
     "status": {
       "active": false,
       "minimised": false
@@ -15,7 +15,7 @@
     "label": "Tic-Tac-Toe",
     "icon": "tictactoe.svg",
     "positionX": 50,
-    "positiony": 50,
+    "positionY": 50,
     "status": {
       "active": false,
       "minimised": false
