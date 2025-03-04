@@ -2,7 +2,7 @@ import { Props, Taskbar } from '@/models/window'
 import TicTacToeWindow from './TicTacToeWindow'
 import MixTape from './MixTape'
 import Link from 'next/link'
-import { MouseEvent, useState } from 'react'
+import { MouseEvent, useEffect, useState } from 'react'
 
 export default function Window({
   setTasks,
@@ -19,6 +19,13 @@ export default function Window({
     (appName) => appName.app === taskName
   )
 
+  useEffect(() => {
+    if (window && movable) {
+      window.style.left = tasks[appIndex].positionX + 'px'
+      window.style.top = tasks[appIndex].positionX + 'px'
+    }
+  }, [])
+
   function closeWindow() {
     const deactivate: Taskbar[] = [...tasks]
     deactivate[appIndex].status.active = false
@@ -32,9 +39,13 @@ export default function Window({
   }
 
   function moveWindow(e: MouseEvent<HTMLLabelElement>) {
+    const movement: Taskbar[] = [...tasks]
     if (window && movable) {
+      movement[appIndex].positionX = window.offsetLeft + e.movementX
+      movement[appIndex].positionY = window.offsetTop + e.movementY
       window.style.left = window.offsetLeft + e.movementX + 'px'
       window.style.top = window.offsetTop + e.movementY + 'px'
+      setTasks(movement)
     }
   }
 
