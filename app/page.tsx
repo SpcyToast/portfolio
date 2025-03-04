@@ -29,14 +29,15 @@ export default function Home() {
     const appIndex: number = minimise.findIndex(
       (appName) => appName.app === app
     )
-    minimise[appIndex].status.minimised = !minimise[appIndex].status.minimised
     appIndex === windowOrder[0]
-      ? minimisWindows(minimise, appIndex)
+      ? minimiseWindows(minimise, appIndex)
       : windowLayers(appIndex)
-    console.log(appIndex, windowOrder[0])
   }
 
   function windowLayers(front: number) {
+    const isOpen: Taskbar[] = [...tasks]
+    isOpen[front].status.minimised = false
+    setTasks(isOpen)
     const windowShift: number[] = [...windowOrder]
     if (windowShift[0] !== front) {
       windowShift.pop()
@@ -46,18 +47,20 @@ export default function Home() {
     console.log(windowOrder, 'front', front)
   }
 
-  function minimisWindows(minimise: Taskbar[], back: number) {
+  function minimiseWindows(minimise: Taskbar[], back: number) {
+    minimise[back].status.minimised = !minimise[back].status.minimised
     setTasks(minimise)
     const windowShift: number[] = [...windowOrder]
     const windowIndex: number = windowShift.findIndex(
       (window) => window === back
     )
     if (windowIndex !== windowShift.length - 1) {
-      windowShift.filter((window) => window === back)
-      windowShift.push(back)
-      setWindowOrder(windowShift)
+      const reordered: number[] = windowShift.filter(
+        (window) => window !== back
+      )
+      reordered.push(back)
+      setWindowOrder(reordered)
     }
-    console.log(windowOrder, 'back', back)
   }
 
   function removeFocus() {
