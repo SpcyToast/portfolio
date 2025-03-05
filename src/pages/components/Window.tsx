@@ -11,6 +11,7 @@ export default function Window({
   windowName,
   windowLayers,
   windowNum,
+  zIndex,
 }: Props) {
   const window = document.getElementById(taskName)
   const [route, setRoute] = useState('https://google.com')
@@ -57,11 +58,14 @@ export default function Window({
   }
 
   return (
-    <div className="window" id={taskName}>
+    <div className="window" id={taskName} style={{ zIndex: zIndex }}>
       <span className="window-info">
         <label
           className="window-name"
-          onMouseDown={() => setMovable(true)}
+          onMouseDown={() => {
+            windowLayers(windowNum)
+            setMovable(true)
+          }}
           onMouseMove={(e) => moveWindow(e)}
           onMouseUp={() => endMovement()}
           onMouseLeave={() => endMovement()}

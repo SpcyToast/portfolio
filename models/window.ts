@@ -5,6 +5,7 @@ export interface Props {
   windowName: string
   windowLayers(Window: number): void
   windowNum: number
+  zIndex: number
 }
 
 export interface TictactoeProps {
