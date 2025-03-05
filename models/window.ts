@@ -3,8 +3,8 @@ export interface Props {
   tasks: Array<Taskbar>
   taskName: string
   windowName: string
-  icon: 
-  windowLayers(Window: number): void
+  icon: string
+  windowLayers(window: number): void
   windowNum: number
   zIndex: number
   checkActive(): void
