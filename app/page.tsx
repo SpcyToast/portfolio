@@ -10,6 +10,7 @@ export default function Home() {
   const [tasks, setTasks] = useState(defaultTaskbar)
   const [start, setStart] = useState(false)
   const [windowOrder, setWindowOrder] = useState(maxWindows)
+  const [activeTasks, setActiveTasks] = useState<Array<number>>([])
 
   // function to launch applications or unminimise them
   function launch(appName: string) {
@@ -23,6 +24,7 @@ export default function Home() {
       }
     }
     removeFocus()
+    checkActive()
   }
 
   // Decides what happens when you click on an up active in the task bar
@@ -86,6 +88,15 @@ export default function Home() {
     setStart(false)
   }
 
+  // updates array of active tasks
+  function checkActive() {
+    const active = []
+    for (let i = 0; i < tasks.length; i++) {
+      tasks[i].status.active === true && active.push(i)
+    }
+    setActiveTasks(active)
+  }
+
   return (
     <>
       <div className="homepage">
@@ -105,46 +116,28 @@ export default function Home() {
           </button>
         ))}
       </div>
-
-      {tasks[0].status.active && (
+      {activeTasks.map((task) => (
         <div
-          id={tasks[0].status.minimised ? 'minimise-app' : ''}
+          id={tasks[task].status.minimised ? 'minimise-app' : ''}
           style={{
-            left: tasks[0].positionX,
-            top: tasks[0].positionY,
+            left: tasks[task].positionX,
+            top: tasks[task].positionY,
           }}
+          key={`window${task}`}
         >
           <AppWindow
             setTasks={setTasks}
             tasks={tasks}
-            taskName={tasks[0].app}
-            windowName={tasks[0].label}
+            taskName={tasks[task].app}
+            icon={tasks[task].icon}
+            windowName={tasks[task].label}
             windowLayers={windowLayers}
-            windowNum={0}
-            zIndex={windowOrder[0]}
+            windowNum={task}
+            zIndex={windowOrder[task]}
+            checkActive={checkActive}
           />
         </div>
-      )}
-
-      {tasks[1].status.active && (
-        <div
-          id={tasks[1].status.minimised ? 'minimise-app' : ''}
-          style={{
-            left: tasks[1].positionX,
-            top: tasks[1].positionY,
-          }}
-        >
-          <AppWindow
-            setTasks={setTasks}
-            tasks={tasks}
-            taskName={tasks[1].app}
-            windowName={tasks[1].label}
-            windowLayers={windowLayers}
-            windowNum={1}
-            zIndex={windowOrder[1]}
-          />
-        </div>
-      )}
+      ))}
 
       <footer>
         <div className="taskbar">
@@ -172,7 +165,7 @@ export default function Home() {
                   }}
                 >
                   <img
-                    src={`/icons/${app.icon}`}
+                    src={`icons/${app.icon}`}
                     className="icons"
                     id={`${app.status.minimised && 'minimise'}`}
                   />
@@ -189,7 +182,7 @@ export default function Home() {
                 launch(app.app)
               }}
             >
-              <img src={app.icon} className="start-app-image" />
+              <img src={`icons/${app.icon}`} className="start-app-image" />
               <h2>{app.label}</h2>
             </button>
           ))}

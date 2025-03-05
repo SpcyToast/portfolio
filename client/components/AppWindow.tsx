@@ -8,10 +8,12 @@ export default function AppWindow({
   setTasks,
   tasks,
   taskName,
+  icon,
   windowName,
   windowLayers,
   windowNum,
   zIndex,
+  checkActive,
 }: Props) {
   const window = document.getElementById(taskName)
   const [route, setRoute] = useState('https://google.com')
@@ -24,6 +26,7 @@ export default function AppWindow({
     const deactivate: Taskbar[] = [...tasks]
     deactivate[appIndex].status.active = false
     setTasks(deactivate)
+    checkActive()
   }
 
   function minimiseWindow() {
@@ -65,7 +68,8 @@ export default function AppWindow({
           onMouseLeave={() => endMovement()}
           onClick={() => windowLayers(windowNum)}
         >
-          {windowName}
+          <img src={`icons/${icon}`} className="window-icon" />
+          <p>{windowName}</p>
         </label>
         <button className="window-buttons" onClick={() => minimiseWindow()}>
           _

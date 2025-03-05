@@ -44,6 +44,7 @@ body {
 .icon {
   width: 50px;
   height: 50px;
+  border-radius: 5px;
 }
 
 .icon-label {
@@ -160,7 +161,10 @@ footer {
   align-content: center;
   justify-content: left;
   flex-grow: 1;
-  padding-left: 10px;
+  padding-left: 5px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 
 .window-buttons {
@@ -172,6 +176,11 @@ footer {
   border-color: black;
   background-color: var(--theme-colour-B);
   font-size: large;
+}
+
+.window-icon {
+  width: 18px;
+  border-radius: 3px;
 }
 
 #last-button {
