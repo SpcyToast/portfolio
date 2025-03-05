@@ -55,22 +55,14 @@ export default function Home() {
   }
 
   // minimise or unminimise application
-  function minimiseWindows(minimise: Taskbar[], back: number) {
-    minimise[back].status.minimised = !minimise[back].status.minimised
+  function minimiseWindows(minimise: Taskbar[], windowIndex: number) {
+    const minimiseLayer = [...windowOrder]
+    minimise[windowIndex].status.minimised =
+      !minimise[windowIndex].status.minimised
     setTasks(minimise)
     // sets window index to minimum value after minimising
-    // REWORK REWORK REWORK REWORK REWORK REWORK REWORK REWORK REWORK REWORK REWORK REWORK REWORK REWORK
-    // const windowShift: number[] = [...windowOrder]
-    // const windowIndex: number = windowShift.findIndex(
-    //   (window) => window === back
-    // )
-    // if (windowIndex !== windowShift.length - 1) {
-    //   const reordered: number[] = windowShift.filter(
-    //     (window) => window !== back
-    //   )
-    //   reordered.push(back)
-    //   setWindowOrder(reordered)
-    // }
+    minimiseLayer[windowIndex] = 1
+    setWindowOrder(minimiseLayer)
   }
 
   // removes highlight from desktop icon
