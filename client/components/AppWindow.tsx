@@ -1,10 +1,10 @@
 import { Props, Taskbar } from '@/models/window'
-import TicTacToeWindow from './TicTacToeWindow'
-import MixTape from './MixTape'
+import TicTacToeWindow from './windows/TicTacToeWindow'
+import MixTape from './windows/MixTape'
 import Link from 'next/link'
 import { MouseEvent, useState } from 'react'
 
-export default function Window({
+export default function AppWindow({
   setTasks,
   tasks,
   taskName,

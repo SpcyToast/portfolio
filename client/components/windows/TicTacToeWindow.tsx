@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import Tictactoe from '@/client/components/games/Tictactoe'
+import Tictactoe from '@/client/components/windows/games/Tictactoe'
 import OnlyThree from './games/OnlyThree'
 import SuperTictactoe from './games/SuperTictactoe'
 import { WindowProps } from '@/models/window'

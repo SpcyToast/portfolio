@@ -1,5 +1,5 @@
 'use client'
-import Window from '@/client/components/Window'
+import AppWindow from '@/client/components/AppWindow'
 import { useState } from 'react'
 import { Taskbar } from '@/models/window'
 import defaultTaskbar from '@/client/data/taskbar.json'
@@ -114,7 +114,7 @@ export default function Home() {
             top: tasks[0].positionY,
           }}
         >
-          <Window
+          <AppWindow
             setTasks={setTasks}
             tasks={tasks}
             taskName={tasks[0].app}
@@ -134,7 +134,7 @@ export default function Home() {
             top: tasks[1].positionY,
           }}
         >
-          <Window
+          <AppWindow
             setTasks={setTasks}
             tasks={tasks}
             taskName={tasks[1].app}
