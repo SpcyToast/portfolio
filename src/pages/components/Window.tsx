@@ -20,11 +20,6 @@ export default function Window({
     (appName) => appName.app === taskName
   )
 
-  if (window && !movable) {
-    window.style.left = tasks[appIndex].positionX
-    window.style.top = tasks[appIndex].positionY
-  }
-
   function closeWindow() {
     const deactivate: Taskbar[] = [...tasks]
     deactivate[appIndex].status.active = false
@@ -50,7 +45,6 @@ export default function Window({
     if (window) {
       const moveLeft: string = window.style.left
       const moveTop: string = window.style.top
-      console.log(moveLeft, moveTop)
       movement[appIndex].positionX = moveLeft
       movement[appIndex].positionY = moveTop
       setTasks(movement)

@@ -5,7 +5,7 @@ import { Taskbar } from '@/models/window'
 import defaultTaskbar from '@/src/data/taskbar.json'
 
 export default function Home() {
-  const maxWindows: number[] = Array(defaultTaskbar.length).fill(1)
+  const maxWindows: number[] = Array(defaultTaskbar.length).fill(-1)
   const [focus, setFocus] = useState('')
   const [tasks, setTasks] = useState(defaultTaskbar)
   const [start, setStart] = useState(false)
@@ -32,7 +32,7 @@ export default function Home() {
     const appIndex: number = minimise.findIndex(
       (appName) => appName.app === app
     )
-    windowOrder[appIndex] === windowOrder.length
+    windowOrder[appIndex] === Math.max(...windowOrder)
       ? minimiseWindows(minimise, appIndex)
       : windowLayers(appIndex)
   }
@@ -42,7 +42,11 @@ export default function Home() {
     const isOpen: Taskbar[] = [...tasks]
     isOpen[windowIndex].status.minimised = false
     setTasks(isOpen)
-    // sets opened window to the highest zIndex
+    bringToFront(windowIndex)
+  }
+
+  // sets opened window to the highest zIndex
+  function bringToFront(windowIndex: number) {
     const oldLayer = windowOrder[windowIndex]
     const windowShift: number[] = windowOrder.map((window) => {
       if (window > oldLayer) {
@@ -60,9 +64,20 @@ export default function Home() {
     minimise[windowIndex].status.minimised =
       !minimise[windowIndex].status.minimised
     setTasks(minimise)
-    // sets window index to minimum value after minimising
-    minimiseLayer[windowIndex] = 1
-    setWindowOrder(minimiseLayer)
+    // if window is unminimised, ensure it is on top
+    if (!minimise[windowIndex].status.minimised) {
+      bringToFront(windowIndex)
+    } else {
+      // sets window index to minimum value after minimising while ensuring a maximum value exisits
+      minimiseLayer[windowIndex] = 1
+      if (Math.max(...windowOrder) === 1) {
+        const searchOpen = tasks.findIndex(
+          (opened) => opened.status.minimised === false
+        )
+        minimiseLayer[searchOpen] = 2
+      }
+      setWindowOrder(minimiseLayer)
+    }
   }
 
   // removes highlight from desktop icon
@@ -97,7 +112,6 @@ export default function Home() {
           style={{
             left: tasks[0].positionX,
             top: tasks[0].positionY,
-            zIndex: windowOrder[0],
           }}
         >
           <Window
@@ -118,7 +132,6 @@ export default function Home() {
           style={{
             left: tasks[1].positionX,
             top: tasks[1].positionY,
-            zIndex: windowOrder[1],
           }}
         >
           <Window
