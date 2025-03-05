@@ -131,7 +131,7 @@ export default function Home() {
             taskName={tasks[task].app}
             icon={tasks[task].icon}
             windowName={tasks[task].label}
-            windowLayers={windowLayers}
+            windowLayers={(window)=> windowLayers(window)}
             windowNum={task}
             zIndex={windowOrder[task]}
             checkActive={checkActive}
