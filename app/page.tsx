@@ -5,12 +5,13 @@ import { Taskbar } from '@/models/window'
 import defaultTaskbar from '@/src/data/taskbar.json'
 
 export default function Home() {
-  const maxWindows: number[] = Array(defaultTaskbar.length).fill(-1)
+  const maxWindows: number[] = Array(defaultTaskbar.length).fill(1)
   const [focus, setFocus] = useState('')
   const [tasks, setTasks] = useState(defaultTaskbar)
   const [start, setStart] = useState(false)
   const [windowOrder, setWindowOrder] = useState(maxWindows)
 
+  // function to launch applications or unminimise them
   function launch(appName: string) {
     const activation: Taskbar[] = [...tasks]
     for (let i = 0; i < tasks.length; i++) {
@@ -24,44 +25,55 @@ export default function Home() {
     removeFocus()
   }
 
+  // Decides what happens when you click on an up active in the task bar
+  // either bring active app to the front or minimise app
   function minimised(app: string) {
     const minimise: Taskbar[] = [...tasks]
     const appIndex: number = minimise.findIndex(
       (appName) => appName.app === app
     )
-    appIndex === windowOrder[0]
+    windowOrder[appIndex] === windowOrder.length
       ? minimiseWindows(minimise, appIndex)
       : windowLayers(appIndex)
   }
 
-  function windowLayers(front: number) {
+  function windowLayers(windowIndex: number) {
+    // make sure application is not minimised
     const isOpen: Taskbar[] = [...tasks]
-    isOpen[front].status.minimised = false
+    isOpen[windowIndex].status.minimised = false
     setTasks(isOpen)
-    const windowShift: number[] = [...windowOrder]
-    if (windowShift[0] !== front) {
-      windowShift.pop()
-      windowShift.unshift(front)
-      setWindowOrder(windowShift)
-    }
+    // sets opened window to the highest zIndex
+    const oldLayer = windowOrder[windowIndex]
+    const windowShift: number[] = windowOrder.map((window) => {
+      if (window > oldLayer) {
+        return window - 1
+      }
+      return window
+    })
+    windowShift[windowIndex] = windowShift.length
+    setWindowOrder(windowShift)
   }
 
+  // minimise or unminimise application
   function minimiseWindows(minimise: Taskbar[], back: number) {
     minimise[back].status.minimised = !minimise[back].status.minimised
     setTasks(minimise)
-    const windowShift: number[] = [...windowOrder]
-    const windowIndex: number = windowShift.findIndex(
-      (window) => window === back
-    )
-    if (windowIndex !== windowShift.length - 1) {
-      const reordered: number[] = windowShift.filter(
-        (window) => window !== back
-      )
-      reordered.push(back)
-      setWindowOrder(reordered)
-    }
+    // sets window index to minimum value after minimising
+    // REWORK REWORK REWORK REWORK REWORK REWORK REWORK REWORK REWORK REWORK REWORK REWORK REWORK REWORK
+    // const windowShift: number[] = [...windowOrder]
+    // const windowIndex: number = windowShift.findIndex(
+    //   (window) => window === back
+    // )
+    // if (windowIndex !== windowShift.length - 1) {
+    //   const reordered: number[] = windowShift.filter(
+    //     (window) => window !== back
+    //   )
+    //   reordered.push(back)
+    //   setWindowOrder(reordered)
+    // }
   }
 
+  // removes highlight from desktop icon
   function removeFocus() {
     setFocus('')
     setStart(false)
@@ -87,40 +99,42 @@ export default function Home() {
         ))}
       </div>
 
-      {windowOrder[1] !== -1 && tasks[windowOrder[1]].status.active && (
+      {tasks[0].status.active && (
         <div
-          id={tasks[windowOrder[1]].status.minimised ? 'minimise-app' : ''}
+          id={tasks[0].status.minimised ? 'minimise-app' : ''}
           style={{
-            left: tasks[windowOrder[1]].positionX,
-            top: tasks[windowOrder[1]].positionY,
+            left: tasks[0].positionX,
+            top: tasks[0].positionY,
+            zIndex: windowOrder[0],
           }}
         >
           <Window
             setTasks={setTasks}
             tasks={tasks}
-            taskName={tasks[windowOrder[1]].app}
-            windowName={tasks[windowOrder[1]].label}
+            taskName={tasks[0].app}
+            windowName={tasks[0].label}
             windowLayers={windowLayers}
-            windowNum={windowOrder[1]}
+            windowNum={0}
           />
         </div>
       )}
 
-      {windowOrder[0] !== -1 && tasks[windowOrder[0]].status.active && (
+      {tasks[1].status.active && (
         <div
-          id={tasks[windowOrder[0]].status.minimised ? 'minimise-app' : ''}
+          id={tasks[1].status.minimised ? 'minimise-app' : ''}
           style={{
-            left: tasks[windowOrder[0]].positionX,
-            top: tasks[windowOrder[0]].positionY,
+            left: tasks[1].positionX,
+            top: tasks[1].positionY,
+            zIndex: windowOrder[1],
           }}
         >
           <Window
             setTasks={setTasks}
             tasks={tasks}
-            taskName={tasks[windowOrder[0]].app}
-            windowName={tasks[windowOrder[0]].label}
+            taskName={tasks[1].app}
+            windowName={tasks[1].label}
             windowLayers={windowLayers}
-            windowNum={windowOrder[0]}
+            windowNum={1}
           />
         </div>
       )}
