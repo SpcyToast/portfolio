@@ -8,7 +8,7 @@ export default function TicTacToeWindow({ setRoute }: WindowProps) {
   const modes: string[] = [
     'Tic-Tac-Toe',
     'Tic-Tac-Toe Bolt',
-    'Super Tic-Tac-Toe',
+    'Ultimate Tic-Tac-Toe',
   ]
   const routes: string[] = [
     'https://www.youtube.com/watch?v=USEjXNCTvcc',
@@ -58,7 +58,7 @@ export default function TicTacToeWindow({ setRoute }: WindowProps) {
           winState={winState}
         />
       )}
-      {modes[selected] === 'Super Tic-Tac-Toe' && (
+      {modes[selected] === 'Ultimate Tic-Tac-Toe' && (
         <SuperTictactoe
           setTurn={setTurn}
           setWinState={setWinState}
