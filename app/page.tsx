@@ -1,8 +1,8 @@
 'use client'
-import Window from '@/src/pages/components/Window'
+import Window from '@/client/components/Window'
 import { useState } from 'react'
 import { Taskbar } from '@/models/window'
-import defaultTaskbar from '@/src/data/taskbar.json'
+import defaultTaskbar from '@/client/data/taskbar.json'
 
 export default function Home() {
   const maxWindows: number[] = Array(defaultTaskbar.length).fill(-1)
@@ -100,7 +100,7 @@ export default function Home() {
               setStart(false)
             }}
           >
-            <img src={application.icon} className="icon" />
+            <img src={`icons/${application.icon}`} className="icon" />
             <p className="icon-label">{application.label}</p>
           </button>
         ))}
@@ -172,7 +172,7 @@ export default function Home() {
                   }}
                 >
                   <img
-                    src={`/${app.icon}`}
+                    src={`/icons/${app.icon}`}
                     className="icons"
                     id={`${app.status.minimised && 'minimise'}`}
                   />

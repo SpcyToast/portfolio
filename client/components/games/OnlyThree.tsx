@@ -1,6 +1,6 @@
-import getRandomNumber from '@/src/pages/components/hooks/getRandomNumber'
+import getRandomNumber from '@/client/hooks/getRandomNumber'
 import { useEffect, useState } from 'react'
-import winStates from '@/src/data/tictactoe.json'
+import winStates from '@/client/data/tictactoe.json'
 import { TictactoeProps } from '@/models/window'
 
 export default function OnlyThree({

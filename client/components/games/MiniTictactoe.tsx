@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import winStates from '@/src/data/tictactoe.json'
+import winStates from '@/client/data/tictactoe.json'
 import { SuperProps } from '@/models/window'
 
 export default function MiniTictactoe({
