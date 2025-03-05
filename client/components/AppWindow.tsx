@@ -14,6 +14,7 @@ export default function AppWindow({
   windowNum,
   zIndex,
   checkActive,
+  removeFocus,
 }: Props) {
   const window = document.getElementById(taskName)
   const [route, setRoute] = useState('https://google.com')
@@ -23,6 +24,7 @@ export default function AppWindow({
   )
 
   function closeWindow() {
+    removeFocus()
     const deactivate: Taskbar[] = [...tasks]
     deactivate[appIndex].status.active = false
     setTasks(deactivate)
@@ -30,6 +32,7 @@ export default function AppWindow({
   }
 
   function minimiseWindow() {
+    removeFocus()
     const minimise: Taskbar[] = [...tasks]
     minimise[appIndex].status.minimised = true
     setTasks(minimise)
@@ -62,11 +65,11 @@ export default function AppWindow({
           onMouseDown={() => {
             windowLayers(windowNum)
             setMovable(true)
+            removeFocus()
           }}
           onMouseMove={(e) => moveWindow(e)}
           onMouseUp={() => endMovement()}
           onMouseLeave={() => endMovement()}
-          onClick={() => windowLayers(windowNum)}
         >
           <img src={`icons/${icon}`} className="window-icon" />
           <p>{windowName}</p>
@@ -75,7 +78,9 @@ export default function AppWindow({
           _
         </button>
         <Link href={route} rel="noopener noreferrer" target="_blank">
-          <button className="window-buttons">?</button>
+          <button className="window-buttons" onClick={() => removeFocus()}>
+            ?
+          </button>
         </Link>
         <button
           className="window-buttons"
@@ -85,7 +90,13 @@ export default function AppWindow({
           x
         </button>
       </span>
-      <div className="content" onClick={() => windowLayers(windowNum)}>
+      <div
+        className="content"
+        onClick={() => {
+          windowLayers(windowNum)
+          removeFocus()
+        }}
+      >
         {windowName === 'Tic-Tac-Toe' && (
           <TicTacToeWindow setRoute={setRoute} />
         )}

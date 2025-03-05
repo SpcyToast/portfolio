@@ -8,6 +8,7 @@ export interface Props {
   windowNum: number
   zIndex: number
   checkActive(): void
+  removeFocus()
 }
 
 export interface TictactoeProps {

@@ -99,7 +99,7 @@ export default function Home() {
 
   return (
     <>
-      <div className="homepage">
+      <div className="homepage" onClick={() => setStart(false)}>
         {tasks.map((application, i) => (
           <button
             key={`application-icon-${i}`}
@@ -135,6 +135,7 @@ export default function Home() {
             windowNum={task}
             zIndex={windowOrder[task]}
             checkActive={checkActive}
+            removeFocus={removeFocus}
           />
         </div>
       ))}
