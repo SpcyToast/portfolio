@@ -223,6 +223,36 @@ footer {
   flex: 1;
 }
 
+.modes-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis ' [..]';
+  max-width: 50px;
+  opacity: 50%;
+}
+
+#left-mode {
+  justify-self: left;
+  padding-left: 30px;
+  direction: rtl;
+}
+
+#right-mode {
+  justify-self: right;
+  padding-right: 30px;
+}
+
+@keyframes slide-right {
+  0% {
+    translate: -60px;
+    overflow-x: hidden;
+  }
+
+  100% {
+    translate: 0px;
+  }
+}
+
 /* tic tac toe game standard*/
 .tictactoe-contianer {
   display: grid;

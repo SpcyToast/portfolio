@@ -3,6 +3,7 @@ import Tictactoe from '@/client/components/windows/games/Tictactoe'
 import OnlyThree from './games/OnlyThree'
 import SuperTictactoe from './games/SuperTictactoe'
 import { WindowProps } from '@/models/window'
+import { MouseEvent } from 'react'
 
 export default function TicTacToeWindow({ setRoute }: WindowProps) {
   const modes: string[] = [
@@ -20,6 +21,7 @@ export default function TicTacToeWindow({ setRoute }: WindowProps) {
   const [selectedRoute, setSelectedRoute] = useState(routes)
   const [turn, setTurn] = useState(2)
   const [winState, setWinState] = useState(false)
+  const [animateLabel, setAnimateLabel] = useState(1)
 
   useEffect(() => {
     setRoute(selectedRoute[0])
@@ -41,17 +43,22 @@ export default function TicTacToeWindow({ setRoute }: WindowProps) {
     }
     setSelected(cycle)
     setSelectedRoute(reroute)
+    setAnimateLabel(movement)
   }
 
   return (
     <>
-      <span className="modes">
-        <button onClick={() => rotate(2)}>
-          <p>{`←`}</p>
+      <span className={`modes`}>
+        <button key={selected[2]} onClick={() => rotate(2)}>
+          <p className={`modes-text`} id="left-mode">
+            {selected[2]}
+          </p>
         </button>
-        <label>{selected[0]}</label>
-        <button onClick={() => rotate(1)}>
-          <p>{`→`}</p>
+        <label key={selected[0]}>{selected[0]}</label>
+        <button key={selected[1]} onClick={() => rotate(1)}>
+          <p className={`modes-text`} id="right-mode">
+            {selected[1]}
+          </p>
         </button>
       </span>
       <br />
