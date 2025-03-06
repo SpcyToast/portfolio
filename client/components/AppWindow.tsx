@@ -13,7 +13,6 @@ export default function AppWindow({
   windowLayers,
   windowNum,
   zIndex,
-  checkActive,
   removeFocus,
   launchOrder,
   setLaunchOrder,
@@ -32,7 +31,6 @@ export default function AppWindow({
     setLaunchOrder(order)
     setTasks(deactivate)
     removeFocus()
-    checkActive()
   }
 
   function minimiseWindow() {

@@ -127,7 +127,6 @@ export default function Home() {
             windowLayers={(window) => windowLayers(window)}
             windowNum={task}
             zIndex={windowOrder[task]}
-            checkActive={checkActive}
             removeFocus={removeFocus}
             setLaunchOrder={setLaunchOrder}
             launchOrder={launchOrder}

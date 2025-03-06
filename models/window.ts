@@ -7,7 +7,6 @@ export interface Props {
   windowLayers(window: number): void
   windowNum: number
   zIndex: number
-  checkActive(): void
   removeFocus(): void
   launchOrder: number[]
   setLaunchOrder: React.Dispatch<React.SetStateAction<Array<number>>>
