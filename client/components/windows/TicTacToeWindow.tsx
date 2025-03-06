@@ -61,7 +61,6 @@ export default function TicTacToeWindow({ setRoute }: WindowProps) {
           </p>
         </button>
       </span>
-      <br />
       {winState && (
         <h1 className="tictactoe-win">{`${turn === 0 ? 'O' : 'X'} Wins!`}</h1>
       )}

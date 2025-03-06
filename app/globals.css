@@ -3,8 +3,10 @@
 :root {
   --font-A: Arial, Helvetica, sans-serif;
   --tictactoe-window-dims: 400px;
-  --theme-colour-A: mediumaquamarine;
-  --theme-colour-B: aquamarine;
+  --theme-colour-A: rgb(102, 205, 170);
+  --theme-colour-B: rgb(127, 255, 212);
+  --theme-colour-A-trans: rgba(102, 205, 170, 0.7);
+  --theme-colour-B-trans: rgba(127, 255, 212, 0.7);
 }
 
 html {
@@ -58,30 +60,36 @@ body {
     drop-shadow(-2px -2px 0.25px palegoldenrod)
     drop-shadow(2px -2px 0.25px palegoldenrod);
   opacity: 1;
+  backdrop-filter: blur(0.5rem);
 }
 
 /* Footer or Taskbar */
 footer {
-  background-color: var(--theme-colour-A);
+  background-color: var(--theme-colour-A-trans);
   height: 35px;
   position: absolute;
   width: 100vw;
   bottom: 0px;
   align-content: center;
   padding-left: 3px;
+  z-index: 100;
+  /* backdrop-filter: blur(0.5rem); */
 }
 
 #start {
-  background-color: var(--theme-colour-B);
+  background-color: var(--theme-colour-B-trans);
   padding: 2px;
   padding-left: 10px;
   padding-right: 100px;
   border-radius: 5px;
+  backdrop-filter: blur(0.5rem);
 }
 
 .taskbar {
   display: flex;
   gap: 7px;
+  z-index: 100;
+  backdrop-filter: blur(0.5rem);
 }
 
 .icons {
@@ -89,6 +97,7 @@ footer {
   padding: 2px;
   background-color: var(--theme-colour-B);
   border-radius: 5px;
+  z-index: 102;
 }
 
 #minimise-app {
@@ -96,7 +105,7 @@ footer {
 }
 
 #minimise {
-  background-color: var(--theme-colour-A);
+  background-color: var(--theme-colour-A-trans);
 }
 
 /* Start menu */
@@ -107,7 +116,7 @@ footer {
   left: 0px;
   width: 350px;
   height: 600px;
-  background-color: var(--theme-colour-B);
+  background-color: var(--theme-colour-B-trans);
   display: grid;
   grid-template-rows: repeat(auto-fill, 50px);
   row-gap: 4px;
@@ -123,6 +132,7 @@ footer {
   font-size: larger;
   background-color: var(--theme-colour-A);
   border-radius: 5px;
+  z-index: 101;
 }
 
 .start-app-image {
@@ -130,6 +140,7 @@ footer {
   height: 40px;
   padding-left: 10px;
   align-self: center;
+  z-index: 101;
 }
 
 .closed {
@@ -139,23 +150,25 @@ footer {
 /* Window Styling */
 .window {
   display: grid;
-  grid-template-rows: 30px 370px;
+  grid-template-rows: 30px auto;
   min-width: 300px;
   width: auto;
   height: auto;
   align-self: center;
-  background: white;
   border: solid black 3px;
   border-radius: 5px;
+  resize: both;
+  overflow: hidden;
 }
 
 .window-info {
   display: flex;
   border-bottom-width: 3px;
   border-color: black;
-  background-color: var(--theme-colour-A);
+  background-color: var(--theme-colour-A-trans);
   border-top-left-radius: 1px;
   border-top-right-radius: 3px;
+  backdrop-filter: blur(0.5rem);
 }
 
 .window-name {
@@ -175,8 +188,9 @@ footer {
   padding-left: 9px;
   border-left-width: 3px;
   border-color: black;
-  background-color: var(--theme-colour-B);
+  background-color: var(--theme-colour-B-trans);
   font-size: large;
+  backdrop-filter: blur(0.5rem);
 }
 
 .window-icon {
@@ -186,7 +200,8 @@ footer {
 
 #last-button {
   border-top-right-radius: 1px;
-  background-color: red;
+  background-color: rgba(255, 0, 0, 0.7);
+  backdrop-filter: blur(0.5rem);
 }
 
 /* window positioning */
@@ -206,6 +221,8 @@ footer {
 /* content CSS */
 .content {
   color: black;
+  background: white;
+  height: auto;
 }
 
 /* tic tac toe CSS */
@@ -254,15 +271,30 @@ footer {
 }
 
 /* tic tac toe game standard*/
+
+.tictactoe-game {
+  display: grid;
+  grid-template-rows: auto 70px;
+}
+
+.tictactoe-layout {
+  display: grid;
+  grid-template-rows: 60px auto;
+}
+
 .tictactoe-contianer {
   display: grid;
-  align-content: center;
   justify-self: center;
-  min-width: 250px;
-  min-height: 300px;
-  grid-template-rows: 28% 28% 28%;
+  width: 90%;
+  height: 100%;
+  grid-template-rows: 33% 33% 33%;
   grid-template-columns: 33% 33% 33%;
   gap: 0px;
+}
+
+.tictactoe-info-container {
+  display: grid;
+  grid-template-rows: 30px 30px;
 }
 
 .tictactoe {
@@ -312,10 +344,10 @@ footer {
   display: grid;
   align-content: center;
   justify-self: center;
-  min-width: 85px;
-  min-height: 70px;
-  grid-template-rows: 33.333333% 33.333333% 33.333333%;
-  grid-template-columns: 33.333333% 33.333333% 33.333333%;
+  min-width: 100%;
+  min-height: 100%;
+  grid-template-rows: 33% 33% 33%;
+  grid-template-columns: 33% 33% 33%;
   outline: 3px;
   gap: 0px;
 }

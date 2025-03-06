@@ -50,29 +50,33 @@ export default function SuperTictactoe({
 
   return (
     <>
-      <div className="tictactoe-contianer">
-        {board.map((state, i) => (
-          <MiniTictactoe
-            state={state}
-            activeBoard={activeBoard}
-            checkActiveBoard={checkActiveBoard}
-            currentBoard={i}
-            turn={turn}
-            setTurn={setTurn}
-            checkWin={checkWin}
-            setMainBoard={setBoard}
-            mainBoard={board}
-            reseted={reseted}
-            winState={winState}
-            key={i}
-          />
-        ))}
-        <label className="tictactoe-info" id="turn">{`It's ${
-          turn === 0 ? 'O' : 'X'
-        }'s Turn`}</label>
-        <button className="tictactoe-info" id="reset" onClick={() => reset()}>
-          Reset
-        </button>
+      <div className="tictactoe-game">
+        <div className="tictactoe-contianer">
+          {board.map((state, i) => (
+            <MiniTictactoe
+              state={state}
+              activeBoard={activeBoard}
+              checkActiveBoard={checkActiveBoard}
+              currentBoard={i}
+              turn={turn}
+              setTurn={setTurn}
+              checkWin={checkWin}
+              setMainBoard={setBoard}
+              mainBoard={board}
+              reseted={reseted}
+              winState={winState}
+              key={i}
+            />
+          ))}
+        </div>
+        <div className="tictactoe-info-container">
+          <label className="tictactoe-info" id="turn">{`It's ${
+            turn === 0 ? 'O' : 'X'
+          }'s Turn`}</label>
+          <button className="tictactoe-info" id="reset" onClick={() => reset()}>
+            Reset
+          </button>
+        </div>
       </div>
     </>
   )

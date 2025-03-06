@@ -90,18 +90,28 @@ export default function AppWindow({
           x
         </button>
       </span>
-      <div
-        className="content"
-        onClick={() => {
-          windowLayers(windowNum)
-          removeFocus()
-        }}
-      >
-        {windowName === 'Tic-Tac-Toe' && (
+      {windowName === 'Tic-Tac-Toe' && (
+        <div
+          className="content tictactoe-layout"
+          onClick={() => {
+            windowLayers(windowNum)
+            removeFocus()
+          }}
+        >
           <TicTacToeWindow setRoute={setRoute} />
-        )}
-        {windowName === 'Mix Tape' && <MixTape setRoute={setRoute} />}
-      </div>
+        </div>
+      )}
+      {windowName === 'Mix Tape' && (
+        <div
+          className="content"
+          onClick={() => {
+            windowLayers(windowNum)
+            removeFocus()
+          }}
+        >
+          <MixTape setRoute={setRoute} />
+        </div>
+      )}
     </div>
   )
 }

@@ -66,40 +66,44 @@ export default function OnlyThree({
 
   return (
     <>
-      <div className="tictactoe-contianer">
-        {board.map((cell, i) => {
-          return (
-            <button
-              className={`tictactoe ${
-                i % 2 === 0 ? 'offset-games' : ''
-              } game-borders`}
-              id={cell === 0 ? 'O' : 'X'}
-              key={i}
-              onClick={() => cell === 2 && !winState && makeMove(i)}
-            >
-              <p
-                className="abril-fatface-regular"
-                id={
-                  turn === 0
-                    ? o[2] === i
+      <div className="tictactoe-game">
+        <div className="tictactoe-contianer">
+          {board.map((cell, i) => {
+            return (
+              <button
+                className={`tictactoe ${
+                  i % 2 === 0 ? 'offset-games' : ''
+                } game-borders`}
+                id={cell === 0 ? 'O' : 'X'}
+                key={i}
+                onClick={() => cell === 2 && !winState && makeMove(i)}
+              >
+                <p
+                  className="abril-fatface-regular"
+                  id={
+                    turn === 0
+                      ? o[2] === i
+                        ? 'last'
+                        : ''
+                      : x[2] === i
                       ? 'last'
                       : ''
-                    : x[2] === i
-                    ? 'last'
-                    : ''
-                }
-              >
-                {cell === 0 ? 'O' : cell === 1 ? 'X' : ''}
-              </p>
-            </button>
-          )
-        })}
-        <label className="tictactoe-info" id="turn">{`It's ${
-          turn === 0 ? 'O' : 'X'
-        }'s Turn`}</label>
-        <button className="tictactoe-info" id="reset" onClick={() => reset()}>
-          Reset
-        </button>
+                  }
+                >
+                  {cell === 0 ? 'O' : cell === 1 ? 'X' : ''}
+                </p>
+              </button>
+            )
+          })}
+        </div>
+        <div className="tictactoe-info-container">
+          <label className="tictactoe-info" id="turn">{`It's ${
+            turn === 0 ? 'O' : 'X'
+          }'s Turn`}</label>
+          <button className="tictactoe-info" id="reset" onClick={() => reset()}>
+            Reset
+          </button>
+        </div>
       </div>
     </>
   )
