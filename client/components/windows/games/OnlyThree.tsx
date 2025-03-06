@@ -95,6 +95,11 @@ export default function OnlyThree({
               </button>
             )
           })}
+          {winState && (
+            <h1 className="tictactoe-win">{`${
+              turn === 0 ? 'O' : 'X'
+            } Wins!`}</h1>
+          )}
         </div>
         <div className="tictactoe-info-container">
           <label className="tictactoe-info" id="turn">{`It's ${

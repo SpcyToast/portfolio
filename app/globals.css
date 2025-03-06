@@ -129,7 +129,7 @@ footer {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: larger;
+  font-size: 100%;
   background-color: var(--theme-colour-A);
   border-radius: 5px;
   z-index: 101;
@@ -152,6 +152,8 @@ footer {
   display: grid;
   grid-template-rows: 30px auto;
   min-width: 300px;
+  min-height: 400px;
+
   width: auto;
   height: auto;
   align-self: center;
@@ -285,8 +287,8 @@ footer {
 .tictactoe-contianer {
   display: grid;
   justify-self: center;
-  width: 90%;
-  height: 100%;
+  width: clamp(50px, 80%, 500px);
+  height: clamp(100px, 100%, 500px);
   grid-template-rows: 33% 33% 33%;
   grid-template-columns: 33% 33% 33%;
   gap: 0px;
@@ -318,12 +320,13 @@ footer {
 
 .tictactoe-win {
   position: absolute;
-  left: 38%;
-  top: 47%;
-  justify-items: center;
+  justify-self: center;
+  align-self: center;
   background-color: black;
   color: white;
   padding: 5px;
+  width: 100%;
+  text-align: center;
 }
 
 #X {
@@ -353,7 +356,7 @@ footer {
 }
 
 .small-font {
-  font-size: small;
+  font-size: clamp(15px, 100%, 35px);
 }
 
 .game-borders {
@@ -373,5 +376,5 @@ footer {
 }
 
 #active-board {
-  background-color: coral;
+  background-color: peachpuff;
 }
