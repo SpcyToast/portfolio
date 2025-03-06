@@ -9,6 +9,8 @@ export interface Props {
   zIndex: number
   checkActive(): void
   removeFocus(): void
+  launchOrder: number[]
+  setLaunchOrder: React.Dispatch<React.SetStateAction<Array<number>>>
 }
 
 export interface TictactoeProps {

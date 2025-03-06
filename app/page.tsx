@@ -16,8 +16,10 @@ export default function Home() {
   // function to launch applications or unminimise them
   function launch(appName: string) {
     const activation: Taskbar[] = [...tasks]
+    const order: number[] = [...launchOrder]
     for (let i = 0; i < tasks.length; i++) {
       if (tasks[i].app === appName) {
+        !activation[i].status.active && order.push(i)
         activation[i].status.active = true
         activation[i].status.minimised = false
         setTasks(activation)
@@ -26,6 +28,8 @@ export default function Home() {
     }
     removeFocus()
     checkActive()
+    setLaunchOrder(order)
+    // console.log(order, launchOrder)
   }
 
   // Decides what happens when you click on an up active in the task bar
@@ -137,6 +141,8 @@ export default function Home() {
             zIndex={windowOrder[task]}
             checkActive={checkActive}
             removeFocus={removeFocus}
+            setLaunchOrder={setLaunchOrder}
+            launchOrder={launchOrder}
           />
         </div>
       ))}
@@ -154,22 +160,22 @@ export default function Home() {
           >
             Start
           </button>
-          {tasks.map(
+          {launchOrder.map(
             (app, i) =>
-              app.status.active && (
+              tasks[app].status.active && (
                 <button
                   key={`taskbar-${i}`}
                   onClick={() => {
                     {
-                      minimised(app.app)
+                      minimised(tasks[app].app)
                       removeFocus()
                     }
                   }}
                 >
                   <img
-                    src={`icons/${app.icon}`}
+                    src={`icons/${tasks[app].icon}`}
                     className="icons"
-                    id={`${app.status.minimised && 'minimise'}`}
+                    id={`${tasks[app].status.minimised && 'minimise'}`}
                   />
                 </button>
               )

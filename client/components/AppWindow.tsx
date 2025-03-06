@@ -15,6 +15,8 @@ export default function AppWindow({
   zIndex,
   checkActive,
   removeFocus,
+  launchOrder,
+  setLaunchOrder,
 }: Props) {
   const window = document.getElementById(taskName)
   const [route, setRoute] = useState('https://google.com')
@@ -24,10 +26,12 @@ export default function AppWindow({
   )
 
   function closeWindow() {
-    removeFocus()
+    const order: number[] = launchOrder.filter((apps) => apps != appIndex)
     const deactivate: Taskbar[] = [...tasks]
     deactivate[appIndex].status.active = false
+    setLaunchOrder(order)
     setTasks(deactivate)
+    removeFocus()
     checkActive()
   }
 
