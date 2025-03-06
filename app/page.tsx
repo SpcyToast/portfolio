@@ -11,6 +11,7 @@ export default function Home() {
   const [start, setStart] = useState(false)
   const [windowOrder, setWindowOrder] = useState(maxWindows)
   const [activeTasks, setActiveTasks] = useState<Array<number>>([])
+  const [launchOrder, setLaunchOrder] = useState<Array<number>>([])
 
   // function to launch applications or unminimise them
   function launch(appName: string) {
@@ -131,7 +132,7 @@ export default function Home() {
             taskName={tasks[task].app}
             icon={tasks[task].icon}
             windowName={tasks[task].label}
-            windowLayers={(window)=> windowLayers(window)}
+            windowLayers={(window) => windowLayers(window)}
             windowNum={task}
             zIndex={windowOrder[task]}
             checkActive={checkActive}
