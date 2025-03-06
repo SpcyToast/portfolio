@@ -10,7 +10,6 @@ export default function Home() {
   const [tasks, setTasks] = useState(defaultTaskbar)
   const [start, setStart] = useState(false)
   const [windowOrder, setWindowOrder] = useState(maxWindows)
-  const [activeTasks, setActiveTasks] = useState<Array<number>>([])
   const [launchOrder, setLaunchOrder] = useState<Array<number>>([])
 
   // function to launch applications or unminimise them
@@ -27,9 +26,7 @@ export default function Home() {
       }
     }
     removeFocus()
-    checkActive()
     setLaunchOrder(order)
-    // console.log(order, launchOrder)
   }
 
   // Decides what happens when you click on an up active in the task bar
@@ -93,15 +90,6 @@ export default function Home() {
     setStart(false)
   }
 
-  // updates array of active tasks
-  function checkActive() {
-    const active = []
-    for (let i = 0; i < tasks.length; i++) {
-      tasks[i].status.active === true && active.push(i)
-    }
-    setActiveTasks(active)
-  }
-
   return (
     <>
       <div className="homepage" onClick={() => setStart(false)}>
@@ -121,7 +109,7 @@ export default function Home() {
           </button>
         ))}
       </div>
-      {activeTasks.map((task) => (
+      {launchOrder.map((task) => (
         <div
           id={tasks[task].status.minimised ? 'minimise-app' : ''}
           style={{
