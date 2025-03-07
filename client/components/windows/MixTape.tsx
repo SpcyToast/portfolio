@@ -21,7 +21,6 @@ export default function MixTape({ setRoute }: WindowProps) {
         const data = await response.json()
 
         setMixTapes(data)
-        console.log(data)
         setLoading(false)
       } catch (error) {
         console.error('Error fetching projects:', error)
@@ -32,16 +31,5 @@ export default function MixTape({ setRoute }: WindowProps) {
     fetchProjects()
   }, [])
 
-  if (!loading)
-    return (
-      <>
-        {mixtapes.map((mixtape) => (
-          <>
-            <h1 style={{ padding: '5px' }}>{`id = ${mixtape.id}`}</h1>
-            <h1 style={{ padding: '5px' }}>{`name = ${mixtape.name}`}</h1>
-            <h1 style={{ padding: '5px' }}>{`author = ${mixtape.author}`}</h1>
-          </>
-        ))}
-      </>
-    )
+  if (!loading) return <></>
 }

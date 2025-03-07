@@ -233,6 +233,7 @@ footer {
   color: black;
   background: white;
   height: auto;
+  overflow: auto;
 }
 
 /* tic tac toe CSS */
@@ -295,8 +296,10 @@ footer {
 .tictactoe-contianer {
   display: grid;
   justify-self: center;
-  width: clamp(50px, 80%, 500px);
-  height: clamp(100px, 100%, 500px);
+  width: clamp(50px, 80%, 726px);
+  width: clamp(50px, 80%, 726px);
+  aspect-ratio: 1 / 1;
+  overflow: hidden hidden;
   grid-template-rows: 33% 33% 33%;
   grid-template-columns: 33% 33% 33%;
   gap: 0px;
