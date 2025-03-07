@@ -1,0 +1,12 @@
+.cassette-container {
+  min-width: 200px;
+  min-height: 90px;
+  display: grid;
+  grid-template-columns: 20% 50% 30%;
+  grid-template-rows: 50% 30% 20%;
+}
+
+.cassette-box {
+  background-color: red;
+  grid-area: 2 / 3 / 1 /2;
+}
