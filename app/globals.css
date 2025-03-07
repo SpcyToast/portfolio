@@ -147,6 +147,16 @@ footer {
   display: none;
 }
 
+.date-time {
+  display: grid;
+  justify-items: center;
+  font-size: 10px;
+  position: absolute;
+  right: 15px;
+  bottom: 1px;
+  color: white;
+}
+
 /* Window Styling */
 .window {
   display: grid;

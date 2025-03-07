@@ -1,6 +1,6 @@
 'use client'
 import AppWindow from '@/client/components/AppWindow'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Taskbar } from '@/models/window'
 import defaultTaskbar from '@/client/data/taskbar.json'
 
@@ -11,6 +11,32 @@ export default function Home() {
   const [start, setStart] = useState(false)
   const [windowOrder, setWindowOrder] = useState(maxWindows)
   const [launchOrder, setLaunchOrder] = useState<Array<number>>([])
+  const [date, setDate] = useState('')
+  const [timeNow, setTimeNow] = useState('')
+
+  useEffect(() => {
+    const today: Date = new Date()
+    const yyyy: number = today.getFullYear()
+    let mm: string = String(today.getMonth() + 1)
+    let dd: string = String(today.getDate())
+    let timeHours: number = today.getHours()
+    let timeMinutes: number = today.getMinutes()
+    let time: string = timeHours + ':' + timeMinutes + ' am'
+
+    if (Number(dd) < 10) {
+      dd = '0' + dd
+    }
+    if (Number(mm) < 10) {
+      mm = '0' + mm
+    }
+    if (timeHours > 12) {
+      timeHours = timeHours - 12
+      time = timeHours + ':' + timeMinutes + ' pm'
+    }
+
+    setDate(`${dd + '/' + mm + '/' + yyyy}`)
+    setTimeNow(time)
+  }, [])
 
   // function to launch applications or unminimise them
   function launch(appName: string) {
@@ -167,6 +193,10 @@ export default function Home() {
                 </button>
               )
           )}
+          <div className="date-time">
+            <h1>{`${timeNow}`}</h1>
+            <h1>{`${date}`}</h1>
+          </div>
         </div>
         <div className={`start-menu ${!start && 'closed'}`}>
           {tasks.map((app, i) => (
