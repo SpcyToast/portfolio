@@ -1,6 +1,7 @@
 import { WindowProps } from '@/models/window'
 import { Mixtape } from '@/models/mixtape'
 import { useEffect, useState } from 'react'
+import Cassette from './mixtape/Cassette'
 
 export default function MixTape({ setRoute }: WindowProps) {
   const [loading, setLoading] = useState(true)
@@ -31,5 +32,10 @@ export default function MixTape({ setRoute }: WindowProps) {
     fetchProjects()
   }, [])
 
-  if (!loading) return <></>
+  if (!loading)
+    return (
+      <>
+        <Cassette />
+      </>
+    )
 }
