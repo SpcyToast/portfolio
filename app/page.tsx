@@ -14,7 +14,7 @@ export default function Home() {
   const [date, setDate] = useState('')
   const [timeNow, setTimeNow] = useState('')
 
-  useEffect(() => {
+  setInterval(() => {
     const today: Date = new Date()
     const yyyy: number = today.getFullYear()
     let mm: string = String(today.getMonth() + 1)
@@ -36,7 +36,7 @@ export default function Home() {
 
     setDate(`${dd + '/' + mm + '/' + yyyy}`)
     setTimeNow(time)
-  }, [])
+  }, 1000)
 
   // function to launch applications or unminimise them
   function launch(appName: string) {
