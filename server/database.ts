@@ -7,3 +7,4 @@ export const db = drizzle({
     authToken: process.env.TURSO_AUTH_TOKEN!,
   },
 })
+console.log(process.env.TURSO_CONNECTION_URL!)
