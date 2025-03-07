@@ -1,11 +1,9 @@
-import { createClient } from '@libsql/client'
-
-// Initialise the Turso client
-const tursoDatabaseUrl = process.env.TURSO_CONNECTION_URL as string
-const tursoAuthToken = process.env.TURSO_AUTH_TOKEN as string
-
-// Initialise the Turso client
-export const turso = createClient({
-  url: tursoDatabaseUrl,
-  authToken: tursoAuthToken,
+import { config } from 'dotenv'
+import { drizzle } from 'drizzle-orm/libsql'
+config({ path: '.env' }) // or .env.local
+export const db = drizzle({
+  connection: {
+    url: process.env.TURSO_CONNECTION_URL!,
+    authToken: process.env.TURSO_AUTH_TOKEN!,
+  },
 })

@@ -20,7 +20,7 @@ export default function MixTape({ setRoute }: WindowProps) {
           )
         }
         const data = await response.json()
-
+        console.log(data)
         setMixTapes(data)
         setLoading(false)
       } catch (error) {
@@ -36,6 +36,7 @@ export default function MixTape({ setRoute }: WindowProps) {
     return (
       <>
         <Cassette />
+        <>{mixtapes[0].name}</>
       </>
     )
 }
