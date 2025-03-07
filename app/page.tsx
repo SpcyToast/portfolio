@@ -28,7 +28,7 @@ export default function Home() {
     let mm: string = String(today.getMonth() + 1)
     let dd: string = String(today.getDate())
     let timeHours: number = today.getHours()
-    let timeMinutes: number = today.getMinutes()
+    let timeMinutes: string = String(today.getMinutes())
     let time: string = timeHours + ':' + timeMinutes + ' am'
 
     if (Number(dd) < 10) {
@@ -37,6 +37,11 @@ export default function Home() {
     if (Number(mm) < 10) {
       mm = '0' + mm
     }
+
+    if (Number(timeMinutes) < 10) {
+      timeMinutes = '0' + timeMinutes
+    }
+
     if (timeHours > 12) {
       timeHours = timeHours - 12
       time = timeHours + ':' + timeMinutes + ' pm'
