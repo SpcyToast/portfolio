@@ -41,6 +41,7 @@ export default function Home() {
 
     if (Number(timeMinutes) < 10) {
       timeMinutes = '0' + timeMinutes
+      time = timeHours + ':' + timeMinutes + ' am'
     }
 
     if (timeHours > 12) {
