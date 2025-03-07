@@ -3,6 +3,7 @@ import AppWindow from '@/client/components/AppWindow'
 import { useEffect, useState } from 'react'
 import { Taskbar } from '@/models/window'
 import defaultTaskbar from '@/client/data/taskbar.json'
+import '@/client/styles/homepage.css'
 
 export default function Home() {
   const maxWindows: number[] = Array(defaultTaskbar.length).fill(-1)

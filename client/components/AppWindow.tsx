@@ -3,6 +3,7 @@ import TicTacToeWindow from './windows/TicTacToeWindow'
 import MixTape from './windows/MixTape'
 import Link from 'next/link'
 import { MouseEvent, useState } from 'react'
+import '@/client/styles/window.css'
 
 export default function AppWindow({
   setTasks,

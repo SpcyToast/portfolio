@@ -1,0 +1,130 @@
+body {
+  background-image: url('/Wallpaper.png');
+  font-family: var(--font-A);
+}
+
+/* Main page, used to sort icons in a grid format */
+.homepage {
+  display: grid;
+  padding: 20px;
+  grid-template-columns: repeat(25, 65px);
+  grid-template-rows: repeat(9, 65px);
+  grid-auto-flow: column;
+  align-content: center;
+  justify-items: center;
+  gap: 10px;
+}
+
+.icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 5px;
+}
+
+.icon-label {
+  justify-self: center;
+  font-size: 10px;
+}
+
+.focus {
+  filter: drop-shadow(2px 2px 0.25px palegoldenrod)
+    drop-shadow(-2px 2px 0.25px palegoldenrod)
+    drop-shadow(-2px -2px 0.25px palegoldenrod)
+    drop-shadow(2px -2px 0.25px palegoldenrod);
+  opacity: 1;
+  backdrop-filter: blur(0.5rem);
+}
+
+/* Footer or Taskbar */
+footer {
+  background-color: var(--theme-colour-A-trans);
+  height: 35px;
+  position: absolute;
+  width: 100vw;
+  bottom: 0px;
+  align-content: center;
+  padding-left: 3px;
+  z-index: 100;
+  /* backdrop-filter: blur(0.5rem); */
+}
+
+#start {
+  background-color: var(--theme-colour-B-trans);
+  padding: 2px;
+  padding-left: 10px;
+  padding-right: 100px;
+  border-radius: 5px;
+  backdrop-filter: blur(0.5rem);
+}
+
+.taskbar {
+  display: flex;
+  gap: 7px;
+  z-index: 100;
+  backdrop-filter: blur(0.5rem);
+}
+
+.icons {
+  max-width: 30px;
+  padding: 2px;
+  background-color: var(--theme-colour-B);
+  border-radius: 5px;
+  z-index: 102;
+}
+
+#minimise-app {
+  display: none;
+}
+
+#minimise {
+  background-color: var(--theme-colour-A-trans);
+}
+
+/* Start menu */
+
+.start-menu {
+  position: absolute;
+  bottom: 35px;
+  left: 0px;
+  width: 350px;
+  height: 600px;
+  background-color: var(--theme-colour-B-trans);
+  display: grid;
+  grid-template-rows: repeat(auto-fill, 50px);
+  row-gap: 4px;
+  padding: 15px;
+  border-top-right-radius: 5px;
+  z-index: 100;
+}
+
+.start-app {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 100%;
+  background-color: var(--theme-colour-A);
+  border-radius: 5px;
+  z-index: 101;
+}
+
+.start-app-image {
+  width: 40px;
+  height: 40px;
+  padding-left: 10px;
+  align-self: center;
+  z-index: 101;
+}
+
+.closed {
+  display: none;
+}
+
+.date-time {
+  display: grid;
+  justify-items: center;
+  font-size: 10px;
+  position: absolute;
+  right: 15px;
+  bottom: 1px;
+  color: white;
+}

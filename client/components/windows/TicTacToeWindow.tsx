@@ -3,7 +3,7 @@ import Tictactoe from '@/client/components/windows/games/Tictactoe'
 import OnlyThree from './games/OnlyThree'
 import SuperTictactoe from './games/SuperTictactoe'
 import { WindowProps } from '@/models/window'
-import { MouseEvent } from 'react'
+import '@/client/styles/tictactoe.css'
 
 export default function TicTacToeWindow({ setRoute }: WindowProps) {
   const modes: string[] = [
@@ -21,7 +21,6 @@ export default function TicTacToeWindow({ setRoute }: WindowProps) {
   const [selectedRoute, setSelectedRoute] = useState(routes)
   const [turn, setTurn] = useState(2)
   const [winState, setWinState] = useState(false)
-  const [animateLabel, setAnimateLabel] = useState(1)
 
   useEffect(() => {
     setRoute(selectedRoute[0])
@@ -43,7 +42,6 @@ export default function TicTacToeWindow({ setRoute }: WindowProps) {
     }
     setSelected(cycle)
     setSelectedRoute(reroute)
-    setAnimateLabel(movement)
   }
 
   return (

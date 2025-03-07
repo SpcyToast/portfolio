@@ -1,0 +1,141 @@
+/* tic tac toe CSS */
+/* mode selector */
+.modes {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  display: flex;
+  justify-content: space-evenly;
+  align-self: center;
+}
+
+.modes button {
+  justify-self: center;
+  flex: 1;
+}
+
+.modes-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis ' [..]';
+  max-width: 50px;
+  opacity: 50%;
+}
+
+#left-mode {
+  justify-self: left;
+  padding-left: 30px;
+  direction: rtl;
+}
+
+#right-mode {
+  justify-self: right;
+  padding-right: 30px;
+}
+
+/* tic tac toe game standard*/
+.tictactoe-game {
+  display: grid;
+  grid-template-rows: auto 70px;
+}
+
+.tictactoe-layout {
+  display: grid;
+  grid-template-rows: 60px auto;
+}
+
+.tictactoe-contianer {
+  display: grid;
+  justify-self: center;
+  width: clamp(50px, 80%, 726px);
+  width: clamp(50px, 80%, 726px);
+  aspect-ratio: 1 / 1;
+  overflow: hidden hidden;
+  grid-template-rows: 33% 33% 33%;
+  grid-template-columns: 33% 33% 33%;
+  gap: 0px;
+}
+
+.tictactoe-info-container {
+  display: grid;
+  grid-template-rows: 30px 30px;
+}
+
+.tictactoe {
+  border-width: 2px;
+  border-color: black;
+}
+
+.tictactoe-info {
+  padding-top: 5px;
+  justify-self: center;
+  grid-column: span 3;
+}
+
+#turn {
+  padding-top: 8px;
+}
+
+#reset {
+  padding-bottom: 30px;
+}
+
+.tictactoe-win {
+  position: absolute;
+  justify-self: center;
+  align-self: center;
+  background-color: black;
+  color: white;
+  padding: 5px;
+  width: 100%;
+  text-align: center;
+}
+
+#X {
+  color: Red;
+}
+
+#O {
+  color: Blue;
+}
+
+/* tic tac toe Max 3 game  */
+#last {
+  opacity: 30%;
+}
+
+/* Super tic tac toe game */
+.super-tictactoe-contianer {
+  display: grid;
+  align-content: center;
+  justify-self: center;
+  min-width: 100%;
+  min-height: 100%;
+  grid-template-rows: 33% 33% 33%;
+  grid-template-columns: 33% 33% 33%;
+  outline: 3px;
+  gap: 0px;
+}
+
+.small-font {
+  font-size: clamp(15px, 100%, 35px);
+}
+
+.game-borders {
+  margin: 1px;
+}
+
+.offset-games {
+  background-color: lavender;
+}
+
+#knots-win {
+  background-color: lightskyblue;
+}
+
+#cross-win {
+  background-color: lightcoral;
+}
+
+#active-board {
+  background-color: peachpuff;
+}
