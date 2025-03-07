@@ -73,7 +73,11 @@ export default function AppWindow({
           onMouseUp={() => endMovement()}
           onMouseLeave={() => endMovement()}
         >
-          <img src={`icons/${icon}`} className="window-icon" />
+          <img
+            src={`icons/${icon}`}
+            className="window-icon"
+            draggable="false"
+          />
           <p>{windowName}</p>
         </label>
         <button className="window-buttons" onClick={() => minimiseWindow()}>
