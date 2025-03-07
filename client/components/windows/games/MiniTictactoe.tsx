@@ -28,7 +28,6 @@ export default function MiniTictactoe({
     play[i] = turn
     setBoard(play)
     checkActiveBoard(i)
-    console.log(activeBoard, mainBoard)
     for (let i = 0; i < winStates.length; i++) {
       if (
         play[winStates[i][0]] === turn &&

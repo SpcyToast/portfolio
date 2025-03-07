@@ -46,6 +46,13 @@ export default function SuperTictactoe({
 
   function checkActiveBoard(nextBoard: number) {
     board[nextBoard] === 2 ? setActiveBoard(nextBoard) : setActiveBoard(9)
+    console.log(
+      'last active board: ',
+      activeBoard === 9 ? 'free' : activeBoard,
+      ' next active board: ',
+      nextBoard,
+      board[nextBoard] !== 2 ? ' (free move) ' : ' (specific sub-game) '
+    )
   }
 
   return (
