@@ -1,6 +1,7 @@
 import { WindowProps } from '@/models/window'
 import { Mixtape } from '@/models/mixtape'
 import { useEffect, useState } from 'react'
+import Cassette from './mixtape/Cassette'
 
 export default function MixTape({ setRoute }: WindowProps) {
   const [loading, setLoading] = useState(true)
@@ -35,13 +36,20 @@ export default function MixTape({ setRoute }: WindowProps) {
   if (!loading)
     return (
       <>
-        {mixtapes.map((mixtape) => (
+        {/* {mixtapes.map((mixtape, i) => (
           <>
-            <h1 style={{ padding: '5px' }}>{`id = ${mixtape.id}`}</h1>
-            <h1 style={{ padding: '5px' }}>{`name = ${mixtape.name}`}</h1>
-            <h1 style={{ padding: '5px' }}>{`author = ${mixtape.author}`}</h1>
+            <h1 key={i} style={{ padding: '5px' }}>{`id = ${mixtape.id}`}</h1>
+            <h1
+              key={i}
+              style={{ padding: '5px' }}
+            >{`name = ${mixtape.name}`}</h1>
+            <h1
+              key={i}
+              style={{ padding: '5px' }}
+            >{`author = ${mixtape.author}`}</h1>
           </>
-        ))}
+        ))} */}
+        <Cassette />
       </>
     )
 }

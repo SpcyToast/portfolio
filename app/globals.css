@@ -386,3 +386,82 @@ footer {
 #active-board {
   background-color: peachpuff;
 }
+
+/* Cassette Styling */
+
+.cassette-container {
+  padding: 10px;
+  width: 120px;
+  align-content: center;
+  justify-self: left;
+}
+
+.cassette-body {
+  background-color: rgb(128, 128, 128);
+  width: 100px;
+  height: 64px;
+  border-radius: 2.5px;
+}
+
+.cassette-label {
+  position: relative;
+  top: 5.5px;
+  left: 6px;
+  background-color: white;
+  width: 88px;
+  height: 39.5px;
+  border-radius: 2px;
+}
+
+.cassette-winder {
+  position: relative;
+  top: 14.247px;
+  left: 14.25px;
+  background-color: green;
+  width: 59.5px;
+  height: 18px;
+  border-radius: 2px;
+}
+
+.cassette-feed {
+  position: relative;
+  top: 3.422px;
+  left: 18.25px;
+  background-color: orange;
+  width: 23px;
+  height: 11px;
+}
+
+.cassette-bottom {
+  position: relative;
+  background-color: orange;
+  top: 8.64px;
+  left: 9px;
+  height: 16px;
+  width: 82.64px;
+}
+
+.cassette-bottom-angle-right {
+  position: relative;
+  background-color: gray;
+  bottom: 14.5px;
+  left: 84px;
+  height: 9px;
+  width: 17px;
+  rotate: 70deg;
+}
+
+.cassette-bottom-angle-left {
+  position: relative;
+  background-color: gray;
+  bottom: 5.5px;
+  left: -1px;
+  height: 9px;
+  width: 17px;
+  rotate: -70deg;
+}
+
+.inner-cassette-box {
+  width: 23px;
+  padding-top: 11px;
+}

@@ -6,7 +6,7 @@ export const mixtape = sqliteTable('mixtape', {
   author: text('author').notNull(),
   // created: text('created')
   //   .default(sql`(CURRENT_TIMESTAMP)`)
-  //   .notNull(),
+  //   .notNull().$default(),
   // updated: integer('updated', { mode: 'timestamp' }).$onUpdate(
   //   () => new Date()
   // ),
@@ -16,10 +16,12 @@ export const songs = sqliteTable('songs', {
   id: integer('id').primaryKey(),
   name: text('name').notNull(),
   link: text('link').notNull(),
+  artist: text('artist'),
+  album: text('album'),
 })
 
 export const mixtape_songs = sqliteTable('mixtape_songs', {
-  mixtape_id: integer('mixtape_id').primaryKey(),
+  mixtape_id: integer('mixtape_id').notNull(),
   song_id: integer('song_id').notNull(),
   order: integer('order').notNull(),
 })
