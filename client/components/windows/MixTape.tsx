@@ -20,7 +20,6 @@ export default function MixTape({ setRoute }: WindowProps) {
           )
         }
         const data = await response.json()
-        console.log(data)
         setMixTapes(data)
         setLoading(false)
       } catch (error) {
