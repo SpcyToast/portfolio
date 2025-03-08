@@ -1,12 +1,80 @@
-.cassette-container {
-  min-width: 200px;
-  min-height: 90px;
-  display: grid;
-  grid-template-columns: 20% 50% 30%;
-  grid-template-rows: 50% 30% 20%;
+:root {
+  --cassette-colour-A: rgb(99, 99, 99);
+  --cassette-colour-B: rgb(221, 219, 219);
 }
 
-.cassette-box {
-  background-color: red;
-  grid-area: 2 / 3 / 1 /2;
+.cassette-container {
+  width: 1000px;
+  min-height: 63.311px;
+  aspect-ratio: 100000 / 63311;
+  display: grid;
+  grid-template-columns: 1% 0.5% 2.999% 0.5% 1% 11.084% 2.413% 0.75% 3.761% 0.238% 4.261% 5.737% 0.012% 3.999% 0.25% 9.498% 0.5% 2.999% 0.5% 9.498% 0.25% 3.999% 0.012% 5.737% 4.261% 0.238% 3.761% 0.75% 2.413% 11.084% 1% 0.5% 2.999% 0.5% 1%;
+  grid-template-rows: 1.58% 0.79% 4.739% 0.79% 0.79% 22.503% 5.405% 0.913% 15.795% 0.667% 5.651% 11.456% 4.739% 4.912% 0.79% 4.739% 0.79% 1.895% 1.867% 0.976% 0.79% 2.685% 2.053% 0.603% 0.186% 1.58%;
+}
+
+/* grid area row start column start row end column end */
+.cassette-case {
+  background-color: var(--cassette-colour-A);
+  grid-area: 1/ 1/ 27/ 36;
+  border-radius: 4%;
+}
+
+.cassette-label {
+  background-color: var(--cassette-colour-B);
+  grid-area: 6 / 6 / 13 / 31;
+  border-radius: 4%;
+}
+
+.cassette-hole-tl {
+  background-color: var(--cassette-colour-B);
+  grid-area: 2 / 2 / 5 / 5;
+  border-radius: 100%;
+}
+
+.cassette-hole-tr {
+  background-color: var(--cassette-colour-B);
+  grid-area: 2 / 32 / 5 / 35;
+  border-radius: 100%;
+}
+
+.cassette-hole-bl {
+  background-color: var(--cassette-colour-B);
+  grid-area: 21 / 2 / 25 / 5;
+  border-radius: 100%;
+}
+
+.cassette-hole-br {
+  background-color: var(--cassette-colour-B);
+  grid-area: 21 / 32 / 25 / 35;
+  border-radius: 100%;
+}
+
+.cassette-small-hole-tl {
+  background-color: var(--cassette-colour-A);
+  grid-area: 3 / 3 / 4 / 4;
+  border-radius: 100%;
+}
+
+.cassette-small-hole-tr {
+  background-color: var(--cassette-colour-A);
+  grid-area: 3 / 33 / 4 / 34;
+  border-radius: 100%;
+}
+
+.cassette-small-hole-bl {
+  background-color: var(--cassette-colour-A);
+  grid-area: 22 / 3 / 24 / 4;
+  border-radius: 100%;
+}
+
+.cassette-small-hole-br {
+  background-color: var(--cassette-colour-A);
+  grid-area: 22 / 33 / 24 / 34;
+  border-radius: 100%;
+}
+
+.cassette-mechanisim-container {
+  background-color: var(--cassette-colour-A);
+  grid-area: 7 / 9 / 12 / 28;
+  border-radius: 4%;
 }
