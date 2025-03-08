@@ -15,6 +15,18 @@ export default function Cassette() {
         <div className="cassette-small-hole-bl"></div>
         <div className="cassette-small-hole-br"></div>
         <div className="cassette-mechanisim-container"></div>
+        <div className="cassette-mechanisim-cogslot-l"></div>
+        <div className="cassette-mechanisim-cogslot-r"></div>
+        <div className="cassette-mechanisim-reel"></div>
+        <div className="cassette-bottom-box"></div>
+        <div className="cassette-bottom-box-l"></div>
+        <div className="cassette-bottom-box-r"></div>
+        <div className="cassette-bottom-hole-l"></div>
+        <div className="cassette-bottom-hole-r"></div>
+        <div className="cassette-bottom-hole-c"></div>
+        <div className="cassette-bottom-hole-c-small"></div>
+        <div className="cassette-bottom-nubb-l"></div>
+        <div className="cassette-bottom-nubb-r"></div>
       </div>
     </>
   )
