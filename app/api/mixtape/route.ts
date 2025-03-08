@@ -1,11 +1,10 @@
-import { db } from '@/server/database'
-import { mixtape } from '@/server/schema'
+import { turso } from '@/server/database'
 
 export const GET = async (req: Request) => {
   try {
-    const data = await db.select().from(mixtape)
+    const mixtape = await turso.execute('SELECT * FROM mixtape')
 
-    return new Response(JSON.stringify(data), { status: 200 })
+    return new Response(JSON.stringify(mixtape.rows), { status: 200 })
   } catch (error) {
     return new Response('Failed to fetch projects', { status: 500 })
   }
