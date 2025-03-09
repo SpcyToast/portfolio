@@ -2,6 +2,7 @@ import { WindowProps } from '@/models/window'
 import { Mixtape } from '@/models/mixtape'
 import { useEffect, useState } from 'react'
 import Cassette from './mixtape/Cassette'
+import '@/client/styles/mixtape.css'
 
 export default function MixTape({ setRoute }: WindowProps) {
   const [loading, setLoading] = useState(true)
@@ -47,6 +48,13 @@ export default function MixTape({ setRoute }: WindowProps) {
       </>
     )
   } else {
-    return <>Loading</>
+    return (
+      <>
+        <div className="mixtape-loading">
+          <img src="/mixtape/cassette-cog.svg" className="loading-spin" />
+          <img src="/mixtape/cassette-cog.svg" className="loading-spin" />
+        </div>
+      </>
+    )
   }
 }
