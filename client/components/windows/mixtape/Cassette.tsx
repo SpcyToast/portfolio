@@ -121,10 +121,10 @@ export default function Cassette({
           ></div>
         </div>
         <div className="cassette-mechanisim-cogslot-l">
-          <img src="/mixtape/cassette-cog.svg" />
+          <img src="/mixtape/cassette-cog.svg" className="spin" />
         </div>
         <div className="cassette-mechanisim-cogslot-r">
-          <img src="/mixtape/cassette-cog.svg" />
+          <img src="/mixtape/cassette-cog.svg" className="spin" />
         </div>
         <div
           className="cassette-bottom-box"

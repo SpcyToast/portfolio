@@ -210,6 +210,10 @@
   animation: reel-grow 10s linear;
 }
 
+.spin {
+  animation: spin 3s linear infinite;
+}
+
 @keyframes reel-grow {
   0% {
     width: 180%;
@@ -225,5 +229,14 @@
   }
   100% {
     width: 180%;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-360deg);
   }
 }
