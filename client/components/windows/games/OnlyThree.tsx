@@ -79,7 +79,7 @@ export default function OnlyThree({
                 onClick={() => cell === 2 && !winState && makeMove(i)}
               >
                 <p
-                  className="abril-fatface-regular"
+                  className="abril-fatface-regular reactive-font"
                   id={
                     turn === 0
                       ? o[2] === i

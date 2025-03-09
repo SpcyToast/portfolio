@@ -113,7 +113,6 @@
 .cassette-bottom-box-l {
   position: relative;
   left: 50%;
-  /* bottom: 1.9%; */
   height: 100%;
   overflow: hidden;
   background-color: var(--cassette-colour-A);
@@ -124,7 +123,6 @@
 .cassette-bottom-box-r {
   position: relative;
   right: 50%;
-  /* bottom: 1.9%; */
   height: 100%;
   overflow: hidden;
   background-color: var(--cassette-colour-A);

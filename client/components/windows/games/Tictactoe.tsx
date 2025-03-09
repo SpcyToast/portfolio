@@ -60,7 +60,7 @@ export default function Tictactoe({
                 key={i}
                 onClick={() => cell === 2 && !winState && makeMove(i)}
               >
-                <p className="abril-fatface-regular">
+                <p className="abril-fatface-regular reactive-font">
                   {cell === 0 ? 'O' : cell === 1 ? 'X' : ''}
                 </p>
               </button>

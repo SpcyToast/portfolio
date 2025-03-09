@@ -63,6 +63,7 @@
 .tictactoe {
   border-width: 2px;
   border-color: black;
+  container-type: inline-size;
 }
 
 .tictactoe-info {
@@ -98,6 +99,10 @@
   color: Blue;
 }
 
+.reactive-font {
+  font-size: 70cqw;
+}
+
 /* tic tac toe Max 3 game  */
 #last {
   opacity: 30%;
@@ -114,10 +119,6 @@
   grid-template-columns: 33% 33% 33%;
   outline: 3px;
   gap: 0px;
-}
-
-.small-font {
-  font-size: clamp(15px, 100%, 35px);
 }
 
 .game-borders {

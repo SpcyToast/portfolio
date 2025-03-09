@@ -76,7 +76,7 @@ export default function MiniTictactoe({
                 makeMove(i)
               }
             >
-              <p className="abril-fatface-regular small-font">
+              <p className="abril-fatface-regular reactive-font">
                 {cell === 0 ? 'O' : cell === 1 ? 'X' : ''}
               </p>
             </button>
