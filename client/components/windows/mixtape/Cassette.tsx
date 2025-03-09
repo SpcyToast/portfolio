@@ -23,32 +23,29 @@ export default function Cassette({
   })
 
   useEffect(() => {
+    // default values for new tape or unaltered colours
     const defaultAttributes = { ...attributes }
-    console.log(defaultAttributes)
 
-    if (defaultAttributes.font === '') {
-      defaultAttributes.font = 'rgb(86, 146, 91)'
-    }
     if (defaultAttributes.font_color === '') {
-      defaultAttributes.font_color = 'rgb(236, 200, 200)'
+      defaultAttributes.font_color = 'rgb(0, 0, 0)'
     }
     if (defaultAttributes.A === '') {
-      defaultAttributes.A = 'rgb(59, 39, 82)'
+      defaultAttributes.A = 'rgb(0, 0, 0)'
     }
     if (defaultAttributes.B === '') {
-      defaultAttributes.B = 'rgb(127, 153, 31)'
+      defaultAttributes.B = 'rgb(134, 134, 131)'
     }
     if (defaultAttributes.C === '') {
-      defaultAttributes.C = 'rgb(61, 15, 136)'
+      defaultAttributes.C = 'rgb(51, 51, 51)'
     }
     if (defaultAttributes.D === '') {
-      defaultAttributes.D = 'rgb(212, 25, 113)'
+      defaultAttributes.D = 'rgb(29, 29, 29)'
     }
     if (defaultAttributes.E === '') {
-      defaultAttributes.E = 'rgb(71, 221, 231)'
+      defaultAttributes.E = 'rgb(116, 116, 116)'
     }
     if (defaultAttributes.F === '') {
-      defaultAttributes.F = 'rgb(142, 197, 151)'
+      defaultAttributes.F = 'rgb(0, 0, 0)'
     }
     console.log(defaultAttributes)
 
@@ -69,7 +66,7 @@ export default function Cassette({
           {attributes.image !== '' && (
             <img src="/Wallpaper.png" className="cassette-image" />
           )}
-          <h1 className="cassette-name" style={{ color: attributes.C }}>
+          <h1 className="cassette-name" style={{ color: attributes.font }}>
             {attributes.name}
           </h1>
         </div>
