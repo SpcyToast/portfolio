@@ -15,3 +15,11 @@ export interface MixtapeSongs {
   song_id: string
   order: string
 }
+
+export interface CassetteProps {
+  tape_name: string
+  colour_A: string
+  colour_B: string
+  colour_C: string
+  image: string
+}

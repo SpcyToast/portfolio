@@ -31,11 +31,22 @@ export default function MixTape({ setRoute }: WindowProps) {
     fetchProjects()
   }, [])
 
-  if (!loading)
+  if (!loading) {
     return (
       <>
-        <Cassette />
-        <>{mixtapes[0].name}</>
+        {mixtapes.map((tape, i) => (
+          <Cassette
+            tape_name={tape.name}
+            colour_A=""
+            colour_B=""
+            colour_C=""
+            image=""
+            key={i}
+          />
+        ))}
       </>
     )
+  } else {
+    return <>Loading</>
+  }
 }

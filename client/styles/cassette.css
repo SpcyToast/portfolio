@@ -4,7 +4,7 @@
 }
 
 .cassette-container {
-  width: 100px;
+  width: 300px;
   min-height: 63.311px;
   aspect-ratio: 100000 / 63311;
   display: grid;
@@ -23,6 +23,10 @@
   background-color: var(--cassette-colour-B);
   grid-area: 6 / 6 / 13 / 31;
   border-radius: 4%;
+  display: grid;
+  container-type: inline-size;
+  grid-template-columns: 16.1818% 67.636% 16.1818%;
+  grid-template-rows: 36.068% 45.569% 18.362%;
 }
 
 .cassette-hole-tl {
@@ -80,19 +84,19 @@
 }
 
 .cassette-mechanisim-cogslot-l {
-  background-color: var(--cassette-colour-B);
+  background-color: white;
   grid-area: 9 / 11 / 10 / 13;
   border-radius: 100%;
 }
 
 .cassette-mechanisim-cogslot-r {
-  background-color: var(--cassette-colour-B);
+  background-color: white;
   grid-area: 9 / 24 / 10 / 26;
   border-radius: 100%;
 }
 
 .cassette-mechanisim-reel {
-  background-color: var(--cassette-colour-B);
+  background-color: white;
   grid-area: 9 / 15 / 10 / 22;
   border-radius: 2%;
 }
@@ -105,8 +109,9 @@
 .cassette-bottom-box-l {
   position: relative;
   left: 50%;
-  bottom: 1.9%;
-  height: 101%;
+  /* bottom: 1.9%; */
+  height: 100%;
+  overflow: hidden;
   background-color: var(--cassette-colour-A);
   grid-area: 14 / 29 / 27 / 30;
   transform: rotate(-8.957deg);
@@ -115,21 +120,22 @@
 .cassette-bottom-box-r {
   position: relative;
   right: 50%;
-  bottom: 1.9%;
-  height: 101%;
+  /* bottom: 1.9%; */
+  height: 100%;
+  overflow: hidden;
   background-color: var(--cassette-colour-A);
   grid-area: 14 / 7 / 27 / 8;
   transform: rotate(8.957deg);
 }
 
 .cassette-bottom-hole-l {
-  background-color: var(--cassette-colour-A);
+  background-color: white;
   grid-area: 20 / 10 / 25 / 12;
   border-radius: 100%;
 }
 
 .cassette-bottom-hole-r {
-  background-color: var(--cassette-colour-A);
+  background-color: white;
   grid-area: 20 / 25 / 25 / 27;
   border-radius: 100%;
 }
@@ -147,13 +153,29 @@
 }
 
 .cassette-bottom-nubb-l {
-  background-color: var(--cassette-colour-A);
+  background-color: white;
   grid-area: 19 / 13 / 23 / 15;
   border-radius: 33%;
 }
 
 .cassette-bottom-nubb-r {
-  background-color: var(--cassette-colour-A);
+  background-color: white;
   grid-area: 19 / 22 / 23 / 24;
   border-radius: 33%;
+}
+
+.cassette-image {
+  grid-area: 1/1/4/4;
+  border-radius: 2%;
+  aspect-ratio: 176 / 79;
+  overflow: none;
+}
+
+.cassette-name {
+  grid-area: 1 / 1 / 2 / 4;
+  justify-self: center;
+  max-width: 100%;
+  font-size: 10cqw;
+  overflow: hidden;
+  text-overflow: clip;
 }
