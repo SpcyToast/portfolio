@@ -19,6 +19,7 @@ export default function Cassette({
     D: colour_B,
     E: colour_C,
     F: colour_C,
+    G: colour_C,
     image: image,
   })
 
@@ -46,6 +47,9 @@ export default function Cassette({
     }
     if (defaultAttributes.F === '') {
       defaultAttributes.F = 'rgb(0, 0, 0)'
+    }
+    if (defaultAttributes.G === '') {
+      defaultAttributes.G = 'rgb(90, 88, 88)'
     }
     console.log(defaultAttributes)
 
@@ -106,13 +110,22 @@ export default function Cassette({
           className="cassette-mechanisim-container"
           style={{ backgroundColor: attributes.D }}
         ></div>
+        <div className="cassette-mechanisim-reel">
+          <div
+            className="reel-in"
+            style={{ backgroundColor: attributes.G }}
+          ></div>
+          <div
+            className="reel-out"
+            style={{ backgroundColor: attributes.G }}
+          ></div>
+        </div>
         <div className="cassette-mechanisim-cogslot-l">
           <img src="/mixtape/cassette-cog.svg" />
         </div>
         <div className="cassette-mechanisim-cogslot-r">
           <img src="/mixtape/cassette-cog.svg" />
         </div>
-        <div className="cassette-mechanisim-reel"></div>
         <div
           className="cassette-bottom-box"
           style={{ backgroundColor: attributes.E }}

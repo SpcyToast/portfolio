@@ -99,6 +99,10 @@
   background-color: white;
   grid-area: 9 / 15 / 10 / 22;
   border-radius: 2%;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 100%;
+  overflow: hidden;
 }
 
 .cassette-bottom-box {
@@ -178,4 +182,48 @@
   font-size: 10cqw;
   overflow: hidden;
   text-overflow: clip;
+}
+
+.reel-in {
+  background-color: red;
+  grid-area: 1/ 1/ 1/ 1;
+  position: relative;
+  border-radius: 100%;
+  aspect-ratio: 1 / 1;
+  align-self: center;
+  justify-self: center;
+  width: 180%;
+  left: -125%;
+  animation: reel-shrink 10s linear;
+}
+
+.reel-out {
+  background-color: red;
+  grid-area: 1/ 2/ 1/ 2;
+  position: relative;
+  border-radius: 100%;
+  aspect-ratio: 1 / 1;
+  align-self: center;
+  justify-self: center;
+  width: 450%;
+  right: -125%;
+  animation: reel-grow 10s linear;
+}
+
+@keyframes reel-grow {
+  0% {
+    width: 180%;
+  }
+  100% {
+    width: 450%;
+  }
+}
+
+@keyframes reel-shrink {
+  0% {
+    width: 450%;
+  }
+  100% {
+    width: 180%;
+  }
 }
