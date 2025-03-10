@@ -4,7 +4,9 @@
 
 ### Background
 
-This project is intended to showcase side projects in a localised format. It is Currently under development and will contain a variety of full stack or front end only mini projects that are responsive in resizable windows.
+This project is intended to showcase side projects in a localised format. It is currently under development and will contain a variety of full stack or front end only mini projects that are responsive in resizable windows.
+
+The App is deployed on https://prashniel-portfolio.vercel.app/. Feel free to check it out
 
 ### Current Apps
 
