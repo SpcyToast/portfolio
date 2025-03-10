@@ -66,12 +66,12 @@
 #tictactoe {
   position: absolute;
   top: 20%;
-  left: 40%;
+  left: 5%;
+  width: 320px;
 }
 
 #mixtape {
   position: absolute;
   top: 20%;
-  left: 40%;
-  /* min-width: 300px; */
+  left: 5%;
 }
