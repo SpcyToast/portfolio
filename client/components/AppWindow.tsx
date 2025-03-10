@@ -21,6 +21,8 @@ export default function AppWindow({
   const window = document.getElementById(taskName)
   const [route, setRoute] = useState('https://google.com')
   const [movable, setMovable] = useState(false)
+  const [touchX, setTouchX] = useState(0)
+  const [touchY, setTouchY] = useState(0)
   const appIndex: number = [...tasks].findIndex(
     (appName) => appName.app === taskName
   )
@@ -41,13 +43,31 @@ export default function AppWindow({
     setTasks(minimise)
   }
 
-  function moveWindow(
-    e: MouseEvent<HTMLLabelElement> | TouchEvent<HTMLLabelElement>
-  ) {
+  function moveWindow(e: MouseEvent<HTMLLabelElement>) {
     if (window && movable) {
       window.style.left = window.offsetLeft + e.movementX + 'px'
       window.style.top = window.offsetTop + e.movementY + 'px'
     }
+  }
+
+  function moveTouchWindow(e: TouchEvent<HTMLLabelElement>) {
+    console.log(e.changedTouches[0].clientX, touchX)
+    if (window && movable) {
+      window.style.left =
+        window.offsetLeft + e.changedTouches[0].clientX - touchX + 'px'
+      window.style.top =
+        window.offsetTop + e.changedTouches[0].clientY - touchY + 'px'
+    }
+    setTouchX(e.changedTouches[0].clientX)
+    setTouchY(e.changedTouches[0].clientY)
+  }
+
+  function touchStarted(e: TouchEvent<HTMLLabelElement>) {
+    windowLayers(windowNum)
+    setMovable(true)
+    removeFocus()
+    setTouchX(e.changedTouches[0].clientX)
+    setTouchY(e.changedTouches[0].clientY)
   }
 
   function endMovement() {
@@ -75,13 +95,11 @@ export default function AppWindow({
           onMouseMove={(e) => moveWindow(e)}
           onMouseUp={() => endMovement()}
           onMouseLeave={() => endMovement()}
-          onTouchStart={() => {
-            windowLayers(windowNum)
-            setMovable(true)
-            removeFocus()
+          onTouchStart={(e) => touchStarted(e)}
+          onTouchMove={(e) => moveTouchWindow(e)}
+          onTouchEnd={() => {
+            endMovement()
           }}
-          onTouchMove={(e) => moveWindow(e)}
-          onTouchEnd={() => endMovement()}
         >
           <img
             src={`icons/${icon}`}

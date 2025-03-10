@@ -1,5 +1,6 @@
 body {
   background-image: url('/Wallpaper.png');
+  background-size: 200vh;
   font-family: var(--font-A);
 }
 
