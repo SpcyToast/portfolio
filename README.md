@@ -22,8 +22,8 @@ The App is deployed on https://prashniel-portfolio.vercel.app/. Feel free to che
 ### Other Improvements Planned
 
 * Test integration
-* image uploading
-* animations
+* Image uploading
+* Animations
 
 ### Methods used
 
