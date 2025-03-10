@@ -19,6 +19,12 @@ The App is deployed on https://prashniel-portfolio.vercel.app/. Feel free to che
 * Chess
 * Connect 4
 
+### Other Improvements Planned
+
+* Test integration
+* image uploading
+* animations
+
 ### Methods used
 
 * Next.js
