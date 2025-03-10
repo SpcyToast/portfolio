@@ -2,7 +2,7 @@ import { Props, Taskbar } from '@/models/window'
 import TicTacToeWindow from './windows/TicTacToeWindow'
 import MixTape from './windows/MixTape'
 import Link from 'next/link'
-import { MouseEvent, useState } from 'react'
+import { MouseEvent, useState, TouchEvent } from 'react'
 import '@/client/styles/window.css'
 
 export default function AppWindow({
@@ -41,7 +41,9 @@ export default function AppWindow({
     setTasks(minimise)
   }
 
-  function moveWindow(e: MouseEvent<HTMLLabelElement>) {
+  function moveWindow(
+    e: MouseEvent<HTMLLabelElement> | TouchEvent<HTMLLabelElement>
+  ) {
     if (window && movable) {
       window.style.left = window.offsetLeft + e.movementX + 'px'
       window.style.top = window.offsetTop + e.movementY + 'px'
@@ -73,6 +75,13 @@ export default function AppWindow({
           onMouseMove={(e) => moveWindow(e)}
           onMouseUp={() => endMovement()}
           onMouseLeave={() => endMovement()}
+          onTouchStart={() => {
+            windowLayers(windowNum)
+            setMovable(true)
+            removeFocus()
+          }}
+          onTouchMove={(e) => moveWindow(e)}
+          onTouchEnd={() => endMovement()}
         >
           <img
             src={`icons/${icon}`}
