@@ -45,7 +45,6 @@ footer {
   align-content: center;
   padding-left: 3px;
   z-index: 100;
-  /* backdrop-filter: blur(0.5rem); */
 }
 
 #start {
