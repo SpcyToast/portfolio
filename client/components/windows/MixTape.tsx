@@ -38,9 +38,15 @@ export default function MixTape({ setRoute }: WindowProps) {
         {mixtapes.map((tape, i) => (
           <Cassette
             tape_name={tape.name}
+            font=""
+            font_colour=""
             colour_A=""
             colour_B=""
             colour_C=""
+            colour_D=""
+            colour_E=""
+            colour_F=""
+            colour_G=""
             image=""
             key={i}
           />

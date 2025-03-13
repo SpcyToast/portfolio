@@ -4,12 +4,16 @@ export const mixtape = sqliteTable('mixtape', {
   id: integer('id').primaryKey(),
   name: text('name').notNull(),
   author: text('author').notNull(),
-  // created: text('created')
-  //   .default(sql`(CURRENT_TIMESTAMP)`)
-  //   .notNull(),
-  // updated: integer('updated', { mode: 'timestamp' }).$onUpdate(
-  //   () => new Date()
-  // ),
+  font: text('font'),
+  font_colour: text('font_colour'),
+  colour_A: text('colour_A'),
+  colour_B: text('colour_B'),
+  colour_C: text('colour_C'),
+  colour_D: text('colour_D'),
+  colour_E: text('colour_E'),
+  colour_F: text('colour_F'),
+  colour_G: text('colour_G'),
+  image: text('image'),
 })
 
 export const songs = sqliteTable('songs', {

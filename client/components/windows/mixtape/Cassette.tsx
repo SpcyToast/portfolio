@@ -4,22 +4,28 @@ import { useEffect, useState } from 'react'
 
 export default function Cassette({
   tape_name,
+  font,
+  font_colour,
   colour_A,
   colour_B,
   colour_C,
+  colour_D,
+  colour_E,
+  colour_F,
+  colour_G,
   image,
 }: CassetteProps) {
   const [attributes, setAttributes] = useState({
     name: tape_name,
-    font: '',
-    font_color: '',
+    font: font,
+    font_colour: font_colour,
     A: colour_A,
     B: colour_B,
     C: colour_C,
-    D: colour_B,
-    E: colour_C,
-    F: colour_C,
-    G: colour_C,
+    D: colour_D,
+    E: colour_E,
+    F: colour_F,
+    G: colour_G,
     image: image,
   })
 
@@ -27,8 +33,8 @@ export default function Cassette({
     // default values for new tape or unaltered colours
     const defaultAttributes = { ...attributes }
 
-    if (defaultAttributes.font_color === '') {
-      defaultAttributes.font_color = 'rgb(0, 0, 0)'
+    if (defaultAttributes.font_colour === '') {
+      defaultAttributes.font_colour = 'rgb(0, 0, 0)'
     }
     if (defaultAttributes.A === '') {
       defaultAttributes.A = 'rgb(0, 0, 0)'
@@ -70,7 +76,10 @@ export default function Cassette({
           {attributes.image !== '' && (
             <img src="/Wallpaper.png" className="cassette-image" />
           )}
-          <h1 className="cassette-name" style={{ color: attributes.font }}>
+          <h1
+            className="cassette-name"
+            style={{ color: attributes.font_colour, font: attributes.font }}
+          >
             {attributes.name}
           </h1>
         </div>
