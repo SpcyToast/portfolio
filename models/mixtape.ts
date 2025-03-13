@@ -2,16 +2,16 @@ export interface Mixtape {
   id: number
   name: string
   author: string
-  font: string
-  font_colour: string
-  colour_A: string
-  colour_B: string
-  colour_C: string
-  colour_D: string
-  colour_E: string
-  colour_F: string
-  colour_G: string
-  image: string
+  font: string | null
+  font_colour: string | null
+  colour_A: string | null
+  colour_B: string | null
+  colour_C: string | null
+  colour_D: string | null
+  colour_E: string | null
+  colour_F: string | null
+  colour_G: string | null
+  image: string | null
 }
 
 export interface Songs {
@@ -28,14 +28,14 @@ export interface MixtapeSongs {
 
 export interface CassetteProps {
   tape_name: string
-  font: string
-  font_colour: string
-  colour_A: string
-  colour_B: string
-  colour_C: string
-  colour_D: string
-  colour_E: string
-  colour_F: string
-  colour_G: string
-  image: string
+  font: string | null
+  font_colour: string | null
+  colour_A: string | null
+  colour_B: string | null
+  colour_C: string | null
+  colour_D: string | null
+  colour_E: string | null
+  colour_F: string | null
+  colour_G: string | null
+  image: string | null
 }
