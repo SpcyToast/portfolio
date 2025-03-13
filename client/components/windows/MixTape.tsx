@@ -7,7 +7,21 @@ import '@/client/styles/mixtape.css'
 export default function MixTape({ setRoute }: WindowProps) {
   const [loading, setLoading] = useState(true)
   const [mixtapes, setMixTapes] = useState<Array<Mixtape>>([
-    { id: -1, name: "didn't work stupid", author: 'Nun yu' },
+    {
+      id: -1,
+      name: "didn't work stupid",
+      author: 'Nun yu',
+      font: '',
+      font_colour: '',
+      colour_A: '',
+      colour_B: '',
+      colour_C: '',
+      colour_D: '',
+      colour_E: '',
+      colour_F: '',
+      colour_G: '',
+      image: '',
+    },
   ])
 
   useEffect(() => {
@@ -38,16 +52,16 @@ export default function MixTape({ setRoute }: WindowProps) {
         {mixtapes.map((tape, i) => (
           <Cassette
             tape_name={tape.name}
-            font=""
-            font_colour=""
-            colour_A=""
-            colour_B=""
-            colour_C=""
-            colour_D=""
-            colour_E=""
-            colour_F=""
-            colour_G=""
-            image=""
+            font={tape.font}
+            font_colour={tape.font_colour}
+            colour_A={tape.colour_A}
+            colour_B={tape.colour_B}
+            colour_C={tape.colour_C}
+            colour_D={tape.colour_D}
+            colour_E={tape.colour_E}
+            colour_F={tape.colour_F}
+            colour_G={tape.colour_G}
+            image={tape.image}
             key={i}
           />
         ))}
