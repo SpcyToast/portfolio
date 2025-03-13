@@ -6,23 +6,30 @@ import defaultTaskbar from '@/client/data/taskbar.json'
 import '@/client/styles/homepage.css'
 
 export default function Home() {
+  // initalise an array which determines the order of which window is on top of another
   const maxWindows: number[] = Array(defaultTaskbar.length).fill(-1)
-  const [focus, setFocus] = useState('')
-  const [tasks, setTasks] = useState(defaultTaskbar)
-  const [start, setStart] = useState(false)
   const [windowOrder, setWindowOrder] = useState(maxWindows)
+  // manages the status and information of each application
+  const [tasks, setTasks] = useState(defaultTaskbar)
+  // state that manages the states associated with desktop functionality
   const [launchOrder, setLaunchOrder] = useState<Array<number>>([])
+  const [focus, setFocus] = useState('')
+  const [start, setStart] = useState(false)
+  // states used to display time and date
   const [date, setDate] = useState('')
   const [timeNow, setTimeNow] = useState('')
 
+  // gets current time and date as soon as the page loads
   useEffect(() => {
     getCurrentDateAndTime()
   }, [])
 
+  // updates date and time every second
   setInterval(() => {
     getCurrentDateAndTime()
   }, 1000)
 
+  // function used to update date and time in the desired format
   function getCurrentDateAndTime() {
     const today: Date = new Date()
     const yyyy: number = today.getFullYear()
@@ -32,6 +39,7 @@ export default function Home() {
     let timeMinutes: string = String(today.getMinutes())
     let time: string = timeHours + ':' + timeMinutes + ' am'
 
+    // alter output string to display information in the desired format
     if (Number(dd) < 10) {
       dd = '0' + dd
     }
@@ -49,11 +57,12 @@ export default function Home() {
       time = timeHours + ':' + timeMinutes + ' pm'
     }
 
+    // update states for date and time
     setDate(`${dd + '/' + mm + '/' + yyyy}`)
     setTimeNow(time)
   }
 
-  // function to launch applications or unminimise them
+  // function to launch or unminimise applications as well as set the launch order on the taskbar
   function launch(appName: string) {
     const activation: Taskbar[] = [...tasks]
     const order: number[] = [...launchOrder]
@@ -70,7 +79,7 @@ export default function Home() {
     setLaunchOrder(order)
   }
 
-  // Decides what happens when you click on an up active in the task bar
+  // Decides what happens when you click on an application in the task bar
   // either bring active app to the front or minimise app
   function minimised(app: string) {
     const minimise: Taskbar[] = [...tasks]
@@ -82,15 +91,15 @@ export default function Home() {
       : windowLayers(appIndex)
   }
 
+  // forces window to be unminimised and in the top most position
   function windowLayers(windowIndex: number) {
-    // make sure application is not minimised
     const isOpen: Taskbar[] = [...tasks]
     isOpen[windowIndex].status.minimised = false
     setTasks(isOpen)
     bringToFront(windowIndex)
   }
 
-  // sets opened window to the highest zIndex
+  // reorders windows to bring the clicked on application to the front regardless of position on the HTML
   function bringToFront(windowIndex: number) {
     const oldLayer = windowOrder[windowIndex]
     const windowShift: number[] = windowOrder.map((window) => {
@@ -125,7 +134,7 @@ export default function Home() {
     }
   }
 
-  // removes highlight from desktop icon
+  // removes highlight from desktop icon and close the start menu
   function removeFocus() {
     setFocus('')
     setStart(false)
@@ -213,19 +222,21 @@ export default function Home() {
             <h1>{`${date}`}</h1>
           </div>
         </div>
-        <div className={`start-menu ${!start && 'closed'}`}>
-          {tasks.map((app, i) => (
-            <button
-              key={`start-menu-${i}`}
-              className="start-app"
-              onClick={() => {
-                launch(app.app)
-              }}
-            >
-              <img src={`icons/${app.icon}`} className="start-app-image" />
-              <h2>{app.label}</h2>
-            </button>
-          ))}
+        <div className="start-menu">
+          <div className={`start-menu-apps ${!start && 'closed'}`}>
+            {tasks.map((app, i) => (
+              <button
+                key={i}
+                className="start-app"
+                onClick={() => {
+                  launch(app.app)
+                }}
+              >
+                <img src={`icons/${app.icon}`} className="start-app-image" />
+                <h2>{app.label}</h2>
+              </button>
+            ))}
+          </div>
         </div>
       </footer>
     </>
