@@ -1,8 +1,3 @@
-:root {
-  --cassette-colour-A: rgb(99, 99, 99);
-  --cassette-colour-B: rgb(221, 219, 219);
-}
-
 .cassette-container {
   width: 300px;
   min-height: 63.311px;
@@ -14,13 +9,11 @@
 
 /* grid area row start column start row end column end */
 .cassette-case {
-  background-color: var(--cassette-colour-A);
   grid-area: 1/ 1/ 27/ 36;
   border-radius: 4%;
 }
 
 .cassette-label {
-  background-color: var(--cassette-colour-B);
   grid-area: 6 / 6 / 13 / 31;
   border-radius: 4%;
   display: grid;
@@ -30,55 +23,46 @@
 }
 
 .cassette-hole-tl {
-  background-color: var(--cassette-colour-B);
   grid-area: 2 / 2 / 5 / 5;
   border-radius: 100%;
 }
 
 .cassette-hole-tr {
-  background-color: var(--cassette-colour-B);
   grid-area: 2 / 32 / 5 / 35;
   border-radius: 100%;
 }
 
 .cassette-hole-bl {
-  background-color: var(--cassette-colour-B);
   grid-area: 21 / 2 / 25 / 5;
   border-radius: 100%;
 }
 
 .cassette-hole-br {
-  background-color: var(--cassette-colour-B);
   grid-area: 21 / 32 / 25 / 35;
   border-radius: 100%;
 }
 
 .cassette-small-hole-tl {
-  background-color: var(--cassette-colour-A);
   grid-area: 3 / 3 / 4 / 4;
   border-radius: 100%;
 }
 
 .cassette-small-hole-tr {
-  background-color: var(--cassette-colour-A);
   grid-area: 3 / 33 / 4 / 34;
   border-radius: 100%;
 }
 
 .cassette-small-hole-bl {
-  background-color: var(--cassette-colour-A);
   grid-area: 22 / 3 / 24 / 4;
   border-radius: 100%;
 }
 
 .cassette-small-hole-br {
-  background-color: var(--cassette-colour-A);
   grid-area: 22 / 33 / 24 / 34;
   border-radius: 100%;
 }
 
 .cassette-mechanisim-container {
-  background-color: var(--cassette-colour-A);
   grid-area: 7 / 9 / 12 / 28;
   border-radius: 4%;
 }
@@ -106,7 +90,6 @@
 }
 
 .cassette-bottom-box {
-  background-color: var(--cassette-colour-B);
   grid-area: 14 / 7 / 27 / 30;
 }
 
@@ -115,7 +98,6 @@
   left: 50%;
   height: 100%;
   overflow: hidden;
-  background-color: var(--cassette-colour-A);
   grid-area: 14 / 29 / 27 / 30;
   transform: rotate(-8.957deg);
 }
@@ -125,7 +107,6 @@
   right: 50%;
   height: 100%;
   overflow: hidden;
-  background-color: var(--cassette-colour-A);
   grid-area: 14 / 7 / 27 / 8;
   transform: rotate(8.957deg);
 }
@@ -143,13 +124,11 @@
 }
 
 .cassette-bottom-hole-c {
-  background-color: var(--cassette-colour-A);
   grid-area: 15 / 17 / 18 / 20;
   border-radius: 100%;
 }
 
 .cassette-bottom-hole-c-small {
-  background-color: var(--cassette-colour-B);
   grid-area: 16 / 18 / 17 / 19;
   border-radius: 100%;
 }
@@ -183,7 +162,6 @@
 }
 
 .reel-in {
-  background-color: red;
   grid-area: 1/ 1/ 1/ 1;
   position: relative;
   border-radius: 100%;
@@ -196,7 +174,6 @@
 }
 
 .reel-out {
-  background-color: red;
   grid-area: 1/ 2/ 1/ 2;
   position: relative;
   border-radius: 100%;
