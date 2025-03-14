@@ -224,7 +224,7 @@ export default function Home() {
           </div>
         </div>
         <div
-          className={`${detailed ? 'start-menu-max' : 'start-menu-mini'}  ${
+          className={`${detailed ? 'start-menu-max' : 'start-menu-max'}  ${
             !start && 'closed'
           }`}
         >
@@ -239,7 +239,7 @@ export default function Home() {
                 }}
               >
                 <img src={`icons/${app.icon}`} className="start-app-image" />
-                <h2>{app.label}</h2>
+                <h2 className="start-app-text">{app.label}</h2>
               </button>
             ))}
           </div>

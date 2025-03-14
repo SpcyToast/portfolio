@@ -12,7 +12,7 @@
   },
   {
     "app": "tictactoe",
-    "label": "Tic-Tac-Toe",
+    "label": "Tic-Tac-Toe extend name for testing puropses",
     "icon": "tictactoe.svg",
     "positionX":"50px",
     "positionY":"50px",

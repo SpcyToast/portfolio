@@ -89,7 +89,7 @@ footer {
   height: 600px;
   background-color: var(--theme-colour-B-trans);
   display: grid;
-  grid-template-columns: 50px 300px;
+  grid-template-columns: 60px 290px;
 }
 
 .start-menu-max {
@@ -100,12 +100,12 @@ footer {
   height: 600px;
   background-color: var(--theme-colour-B-trans);
   display: grid;
-  grid-template-columns: 150px 250px;
+  grid-template-columns: 160px 190px;
 }
 
 .account-details {
   background-color: var(--theme-colour-A-trans);
-  grid-template-rows: 50px auto 75px 75px;
+  grid-template-rows: 50px auto 50px 50px;
 }
 
 .start-menu-apps {
@@ -125,6 +125,13 @@ footer {
   background-color: var(--theme-colour-A);
   border-radius: 5px;
   z-index: 101;
+  overflow: hidden;
+  text-overflow: clip;
+  white-space: nowrap;
+}
+
+.start-app-text {
+  padding-right: 10px;
 }
 
 .start-app-image {
