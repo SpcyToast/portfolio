@@ -15,6 +15,7 @@ export default function Home() {
   const [launchOrder, setLaunchOrder] = useState<Array<number>>([])
   const [focus, setFocus] = useState('')
   const [start, setStart] = useState(false)
+  const [detailed, setDetailed] = useState(false)
   // states used to display time and date
   const [date, setDate] = useState('')
   const [timeNow, setTimeNow] = useState('')
@@ -222,8 +223,13 @@ export default function Home() {
             <h1>{`${date}`}</h1>
           </div>
         </div>
-        <div className="start-menu">
-          <div className={`start-menu-apps ${!start && 'closed'}`}>
+        <div
+          className={`${detailed ? 'start-menu-max' : 'start-menu-mini'}  ${
+            !start && 'closed'
+          }`}
+        >
+          <div className="account-details"></div>
+          <div className={`start-menu-apps`}>
             {tasks.map((app, i) => (
               <button
                 key={i}

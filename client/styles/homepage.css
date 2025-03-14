@@ -81,19 +81,36 @@ footer {
 
 /* Start menu */
 
-.start-menu {
+.start-menu-mini {
   position: absolute;
   bottom: 35px;
   left: 0px;
-}
-
-.start-menu-apps {
- 
   width: 350px;
   height: 600px;
   background-color: var(--theme-colour-B-trans);
   display: grid;
-  grid-template-rows: repeat(auto-fill, 50px);
+  grid-template-columns: 50px 300px;
+}
+
+.start-menu-max {
+  position: absolute;
+  bottom: 35px;
+  left: 0px;
+  width: 350px;
+  height: 600px;
+  background-color: var(--theme-colour-B-trans);
+  display: grid;
+  grid-template-columns: 150px 250px;
+}
+
+.account-details {
+  background-color: var(--theme-colour-A-trans);
+  grid-template-rows: 50px auto 75px 75px;
+}
+
+.start-menu-apps {
+  display: grid;
+  grid-auto-rows: 50px;
   row-gap: 4px;
   padding: 15px;
   border-top-right-radius: 5px;
