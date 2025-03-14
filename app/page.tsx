@@ -224,7 +224,7 @@ export default function Home() {
           </div>
         </div>
         <div
-          className={`${detailed ? 'start-menu-max' : 'start-menu-max'}  ${
+          className={`${detailed ? 'start-menu-max' : 'start-menu-min'}  ${
             !start && 'closed'
           }`}
         >

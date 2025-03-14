@@ -81,7 +81,7 @@ footer {
 
 /* Start menu */
 
-.start-menu-mini {
+.start-menu-min {
   position: absolute;
   bottom: 35px;
   left: 0px;
@@ -89,7 +89,7 @@ footer {
   height: 600px;
   background-color: var(--theme-colour-B-trans);
   display: grid;
-  grid-template-columns: 60px 290px;
+  grid-template-columns: 50px 300px;
 }
 
 .start-menu-max {
@@ -118,20 +118,23 @@ footer {
 }
 
 .start-app {
-  display: flex;
+  display: grid;
+  width: 100%;
+  grid-template-columns: 40px auto 10px;
   align-items: center;
   gap: 10px;
   font-size: 100%;
   background-color: var(--theme-colour-A);
   border-radius: 5px;
   z-index: 101;
-  overflow: hidden;
-  text-overflow: clip;
+  overflow: clip;
   white-space: nowrap;
+  justify-content: left;
 }
 
 .start-app-text {
-  padding-right: 10px;
+  width: 100%;
+  overflow: hidden;
 }
 
 .start-app-image {
