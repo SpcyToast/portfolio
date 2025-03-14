@@ -228,7 +228,35 @@ export default function Home() {
             !start && 'closed'
           }`}
         >
-          <div className="account-details"></div>
+          <div className="account-details">
+            <div>
+              <img
+                src="/icons/default-profile.svg"
+                alt="profile picture"
+                className="profile-pic"
+              />
+              {detailed && <h2 className="account-name">Sign in</h2>}
+            </div>
+            <button onClick={() => setDetailed(!detailed)}>
+              {detailed ? '<' : '>'}
+            </button>
+            <div className="detail-icons-container">
+              <img
+                src="/icons/documents.svg"
+                alt="portfolio"
+                className="detail-icons"
+              />
+              {detailed && <h2>Portfolio</h2>}
+            </div>
+            <div className="detail-icons-container">
+              <img
+                src="/icons/settings.svg"
+                alt="settings"
+                className="detail-icons"
+              />
+              {detailed && <h2>Settings</h2>}
+            </div>
+          </div>
           <div className={`start-menu-apps`}>
             {tasks.map((app, i) => (
               <button

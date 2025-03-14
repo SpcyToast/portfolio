@@ -103,11 +103,6 @@ footer {
   grid-template-columns: 160px 190px;
 }
 
-.account-details {
-  background-color: var(--theme-colour-A-trans);
-  grid-template-rows: 50px auto 50px 50px;
-}
-
 .start-menu-apps {
   display: grid;
   grid-auto-rows: 50px;
@@ -143,6 +138,35 @@ footer {
   padding-left: 10px;
   align-self: center;
   z-index: 101;
+}
+
+.account-details {
+  background-color: var(--theme-colour-A-trans);
+  display: grid;
+  grid-template-rows: 50px auto 50px 60px;
+}
+
+.profile-pic {
+  background-color: var(--theme-colour-B);
+  border-radius: 100%;
+  align-self: baseline;
+  justify-self: center;
+  margin-top: 15%;
+  width: 80%;
+}
+
+.detail-icons-container {
+  display: flex;
+  align-items: center;
+}
+
+.detail-icons {
+  width: 50px;
+  padding: 5px;
+}
+
+.account-name {
+  justify-self: center;
 }
 
 .closed {
