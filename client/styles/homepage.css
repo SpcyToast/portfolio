@@ -7,9 +7,9 @@ body {
 .homepage {
   display: grid;
   padding: 20px;
-  grid-template-columns: repeat(auto-fill, 65px);
-  grid-auto-rows: 65px;
-  grid-auto-flow: row dense;
+  grid-template-rows: repeat(9, 65px);
+  grid-auto-columns: 65px;
+  grid-auto-flow: column;
   align-content: center;
   justify-items: center;
   gap: 10px;
