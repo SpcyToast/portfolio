@@ -2,15 +2,15 @@
 import AppWindow from '@/client/components/AppWindow'
 import { useEffect, useState } from 'react'
 import { Taskbar } from '@/models/window'
-import defaultTaskbar from '@/client/data/taskbar.json'
+import defaultApplications from '@/client/data/applications.json'
 import '@/client/styles/homepage.css'
 
 export default function Home() {
   // initalise an array which determines the order of which window is on top of another
-  const maxWindows: number[] = Array(defaultTaskbar.length).fill(-1)
+  const maxWindows: number[] = Array(defaultApplications.length).fill(-1)
   const [windowOrder, setWindowOrder] = useState(maxWindows)
   // manages the status and information of each application
-  const [tasks, setTasks] = useState(defaultTaskbar)
+  const [tasks, setTasks] = useState(defaultApplications)
   // state that manages the states associated with desktop functionality
   const [launchOrder, setLaunchOrder] = useState<Array<number>>([])
   const [focus, setFocus] = useState('')

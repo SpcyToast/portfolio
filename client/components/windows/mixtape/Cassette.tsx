@@ -35,30 +35,24 @@ export default function Cassette({
         <div
           className="cassette-case"
           style={{
-            backgroundColor: attributes.A ? attributes.A : 'rgb(0, 0, 0)',
+            backgroundColor: colour_A ? colour_A : 'rgb(0, 0, 0)',
           }}
         ></div>
         <div
           className="cassette-label"
           style={{
-            backgroundColor: attributes.B ? attributes.B : 'rgb(134, 134, 131)',
+            backgroundColor: colour_B ? colour_B : 'rgb(134, 134, 131)',
           }}
         >
-          {attributes.image !== null && (
-            <img src={attributes.image} className="cassette-image" />
-          )}
+          {image !== null && <img src={image} className="cassette-image" />}
           <h1
             className="cassette-name"
             style={{
-              color: attributes.font_colour
-                ? attributes.font_colour
-                : 'rgb(0, 0, 0)',
-              font: attributes.font
-                ? attributes.font
-                : 'Arial, Helvetica, sans-serif',
+              color: font_colour ? font_colour : 'rgb(0, 0, 0)',
+              font: font ? font : 'Arial, Helvetica, sans-serif',
             }}
           >
-            {attributes.name}
+            {tape_name}
           </h1>
         </div>
         <div
