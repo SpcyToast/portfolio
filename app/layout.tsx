@@ -17,4 +17,3 @@ export default function RootLayout({
     </html>
   )
 }
-// I got job yey
